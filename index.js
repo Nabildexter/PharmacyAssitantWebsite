@@ -127,17 +127,19 @@ function sigCase(num){
 
 	if(num==1){
 
+
 		//Initialize QA and QTY and other fields
 		var QA = 0;
 		var QTY = 0;
+		var baseStartingDose = document.getElementById("baseStartStrength").value;
 		var base = document.getElementById("baseStrength").value;
-		var increaseBy = document.getElementById("baseIncrement").value;
-		var scaleIncrease = increaseBy/base;
+		var IncreaseBy = document.getElementById("baseIncrement").value;
+		var scaleIncrease = IncreaseBy/base;
 		var Duration = document.getElementById("IntervalDuration").value;
 		var Intervals = document.getElementById("IntervalCount").value;
 		var Refills = document.getElementById("RefillCount").value || 0;
 		var result = "";
-		var capOrTab = document.getElementById("CapOrTab1").value;
+		var capOrTab1 = document.getElementById("CapOrTab1").value;
 		var maxIntake = 0;
 		var daySupply = Duration*Intervals;
 
@@ -146,41 +148,51 @@ function sigCase(num){
 		console.log("Duration: " + Duration + " days.");
 		console.log("Intervals: " + Intervals);
 		console.log("Refills: " + Refills);
-		console.log("Form: " + capOrTab);
-		console.log("Increase Each Intake by " + scaleIncrease*base + " " + capOrTab);
+		console.log("Form: " + capOrTab1);
+		console.log("Decrease Each Intake by " + (scaleIncrease*base/base) + " " + capOrTab1);
+
+		StartDose = baseStartingDose/base;
+		LastDosage = StartDose + ((Intervals-1)*scaleIncrease);
 
 
-		//QTY To Dispense
+		console.log(">>> Start Dose: " + StartDose + " " + capOrTab1);
+		console.log(">>> Last Dose: " +  LastDosage + " " + capOrTab1);
+
+
+		//QTY To dispense
 		for(var i = 0; i < Intervals; i++){
-			QTY = QTY + Duration*(i+1);
+			QTY = QTY + (StartDose+(i*scaleIncrease))*Duration;
+			console.log((StartDose+(i*scaleIncrease))*Duration);
 		}
-		console.log("QTY: " + QTY + " " + capOrTab);
+
+		console.log("QTY: " + QTY + " " + capOrTab1);	
 
 
 		//QA total
-		QA = QTY + Intervals*daySupply*Refills;
-		console.log("QA: " + QA + " " + capOrTab);
+		console.log("LastDose is : " + LastDosage + " " + CapOrTab1)
+		QA = QTY + LastDosage*daySupply*Refills;
 
 	 	//Day Supply
 	 	daySupply = Intervals*Duration;
 		console.log("Days Supply: " + daySupply + " Days.");
 
 
+		var amount = StartDose;
 
 
 		//String Builder
 		for(var i = 0; i < Intervals; i++){
 
-			amount = i*scaleIncrease+1;
+			amount = StartDose + (i*scaleIncrease);
 
 			if(i<1){
-				result = result + "Take " + amount+ " " + capOrTab.substring(0, capOrTab.length-1) + "(=" + amount*base + "mg)" +" By Mouth Once Daily For "  + Duration + " days. Then,\n";  
+				result = result + "Take " + amount+ " " + capOrTab1.substring(0, capOrTab1.length-1) + "(=" + amount*base + "mg)" +" By Mouth Once Daily For "  + Duration + " days. Then,\n";  
 			}
 			else if(i<Intervals-1){	
-				result = result + "Take " + amount+ " " + capOrTab + "(=" + amount*base + "mg)" +" By Mouth Once Daily For "  + Duration + " days. Then,\n";  
+				result = result + "Take " + amount+ " " + capOrTab1 + "(=" + amount*base + "mg)" +" By Mouth Once Daily For "  + Duration + " days. Then,\n";  
 			}
 			else{
-				result = result + "Take " + amount + " " + capOrTab + "(=" + amount*base + "mg)" +" By Mouth Once Daily Onwards.";  				
+				result = result + "Take " + amount + " " + capOrTab1 + "(=" + amount*base + "mg)" +" By Mouth Once Daily Onwards.";  				
 			}  
 		}
 		console.log("");
@@ -189,12 +201,86 @@ function sigCase(num){
 
 		//Update Output Table
 		updateSigTable(QA, QTY, result, daySupply, Refills);
+
 	}
-	else {
-		alert("Feature Still in Development")
+	if(num===2) {
+
+		//Initialize QA and QTY and other fields
+		var QA = 0;
+		var QTY = 0;
+		var baseStartingDose = document.getElementById("baseStartStrength2").value;
+		var base = document.getElementById("baseStrength2").value;
+		var DecreaseBy = document.getElementById("baseDecrement2").value;
+		var scaleIncrease = DecreaseBy/base;
+		var Duration = document.getElementById("IntervalDuration2").value;
+		var Intervals = document.getElementById("IntervalCount2").value;
+		var Refills = document.getElementById("RefillCount2").value || 0;
+		var result = "";
+		var capOrTab2 = document.getElementById("CapOrTab2").value;
+		var maxIntake = 0;
+		var daySupply = Duration*Intervals;
+
+
+		//Testing
+		console.log("Duration: " + Duration + " days.");
+		console.log("Intervals: " + Intervals);
+		console.log("Refills: " + Refills);
+		console.log("Form: " + capOrTab2);
+		console.log("Decrease Each Intake by " + (scaleIncrease*base/base) + " " + capOrTab2);
+
+		StartDose = baseStartingDose/base;
+		LastDosage = StartDose + ((Intervals-1)*scaleIncrease);
+
+
+		console.log(">>> Start Dose: " + StartDose + " " + capOrTab2);
+		console.log(">>> Last Dose: " +  LastDosage + " " + capOrTab2);
+
+
+		//QTY To dispense
+		for(var i = 0; i < Intervals; i++){
+			QTY = QTY + (StartDose+(i*scaleIncrease))*Duration;
+			console.log((StartDose+(i*scaleIncrease))*Duration);
+		}
+
+		console.log("QTY: " + QTY + " " + capOrTab2);	
+
+
+		//QA total
+		console.log("LastDose is : " + LastDosage + " " + CapOrTab2)
+		QA = QTY + LastDosage*daySupply*Refills;
+
+	 	//Day Supply
+	 	daySupply = Intervals*Duration;
+		console.log("Days Supply: " + daySupply + " Days.");
+
+
+		var amount = StartDose;
+
+
+		//String Builder
+		for(var i = 0; i < Intervals; i++){
+
+			amount = StartDose + (i*scaleIncrease);
+
+			if(i<1){
+				result = result + "Take " + amount+ " " + capOrTab2.substring(0, capOrTab2.length-1) + "(=" + amount*base + "mg)" +" By Mouth Once Daily For "  + Duration + " days. Then,\n";  
+			}
+			else if(i<Intervals-1){	
+				result = result + "Take " + amount+ " " + capOrTab2 + "(=" + amount*base + "mg)" +" By Mouth Once Daily For "  + Duration + " days. Then,\n";  
+			}
+			else{
+				result = result + "Take " + amount + " " + capOrTab2 + "(=" + amount*base + "mg)" +" By Mouth Once Daily Onwards.";  				
+			}  
+		}
+		console.log("");
+		console.log(result);
+
+
+		//Update Output Table
+		updateSigTable(QA, QTY, result, daySupply, Refills);
+
 	}
 }
-
 
 
 //Rough Math Work Out

@@ -105,6 +105,10 @@
       </select>
     </div>
     <div class="form-group">
+      <label for="baseStartStrength" id="">Base Starting Dose Strength (e.g in mg)</label>
+      <input type="number" name="baseStartStrength" placeholder="e.g 75" id="baseStartStrength">
+    </div>
+    <div class="form-group">
       <label for="baseStrength" id="">Base Tablet Strength (e.g in mg)</label>
       <input type="number" name="baseStrength" placeholder="e.g 25" id="baseStrength">
     </div>
@@ -137,36 +141,36 @@
   <form class="mb-5">
     <div class="form-group">
       <label for="" id="">Form</label>
-      <select id="CapOrTab1" name="CapOrTab1">
+      <select id="CapOrTab2" name="CapOrTab2">
         <option value="Tablets">Tablets</option>
         <option value="Capsules">Capsules</option>
       </select>
     </div>
     <div class="form-group">
-      <label for="baseStrength" id="">Base Starting Dose Strength (e.g in mg)</label>
-      <input type="number" name="baseStrength" placeholder="e.g 75" id="baseStrength">
+      <label for="baseStartStrength2" id="">Base Starting Dose Strength (e.g in mg)</label>
+      <input type="number" name="baseStartStrength2" placeholder="e.g 75" id="baseStartStrength2">
     </div>
     <div class="form-group">
-      <label for="baseStrength" id="">Base Tablet Strength (e.g in mg)</label>
-      <input type="number" name="baseStrength" placeholder="e.g 25" id="baseStrength">
+      <label for="baseStrength2" id="">Base Tablet Strength (e.g in mg)</label>
+      <input type="number" name="baseStrength2" placeholder="e.g 25" id="baseStrength2">
     </div>
     <div class="form-group">
-      <label for="baseIncrement" id="">Base Negative Increment (e.g -25mg every interval) </label>
-      <input type="number" name="baseIncrement" placeholder="e.g 25" id="baseIncrement">
+      <label for="baseDecrement2" id="">Base Negative Decrement (e.g -25mg every interval) </label>
+      <input type="number" name="baseDecrement2" placeholder="e.g -25" id="baseDecrement2">
     </div>
     <div class="form-group">
-      <label for="IntervalDuration" id="">Interval Duration in Days (e.g Every 7 days)</label>
-      <input type="number" name="IntervalDuration" placeholder="e.g 7" id="IntervalDuration">
+      <label for="IntervalDuration2" id="">Interval Duration in Days (e.g Every 7 days)</label>
+      <input type="number" name="IntervalDuration2" placeholder="e.g 7" id="IntervalDuration2">
     </div>
     <div class="form-group">
-    <label for="IntervalCount" id="">How Many Intervals (e.g 3 Iterations Of 7 days)</label>
-    <input type="number" name="IntervalCount" placeholder="e.g 3" id="IntervalCount">
+    <label for="IntervalCount2" id="">How Many Intervals (e.g 3 Iterations Of 7 days)</label>
+    <input type="number" name="IntervalCount2" placeholder="e.g 3" id="IntervalCount2">
     </div>
     <div class="form-group">
-    <label for="RefillCount" id="">How Many Repeats/Refills (e.g 3 Refills Onwards)</label>
-    <input type="number" name="RefillCount" placeholder="e.g 3" id="RefillCount">
+    <label for="RefillCount2" id="">How Many Repeats/Refills (e.g 3 Refills Onwards)</label>
+    <input type="number" name="RefillCount2" placeholder="e.g 3" id="RefillCount2">
     </div>    
-    <button type="button" class="btn btn-success disabled" onclick="generateSig(2)">STILL IN DEVELOPMENT</button>
+    <button type="button" class="btn btn-success" onclick="generateSig(2)">Generate</button>
   </form>
 
 
