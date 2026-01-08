@@ -52,6 +52,14 @@
 	animation-iteration-count: 1;
 }
 
+
+.pic{
+  height: 500px;
+  width: 100%;
+  border: 1px solid grey;
+  background-color: grey;
+}
+
 @keyframes FadeOut {
 	0%{
 		opacity: 1.0;
