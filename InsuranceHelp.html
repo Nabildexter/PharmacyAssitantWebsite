@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Rexall Rx Assitant Tool</title>
+	<title>Rx Assitant Tool</title>
 
 
   <!-- Boostrap Styles -->
@@ -13,26 +13,24 @@
 </head>
 <body>
   
+
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark RexallGreenLight1">
-  <a class="navbar-brand" href="#">Rexall Rx Assistant</a>
+  <a class="navbar-brand" href="index.html">Rx Assistant</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" arSia-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="InsuranceHelp.html">Insurance<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="InsuranceHelp.html">Insurance Help<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="FaxHelp.html">Fax Help<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="FaxHelp.html">Faxes<span class="sr-only">(current)</span></a>
       </li>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="SigHelp.html">SIG Help<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="SigHelp.html">SIGs<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active" style="margin-left: 80px;">
         <a class="nav-link" href=""><span class="sr-only">(current)</span></a>
@@ -64,7 +62,7 @@
 <div class="container m-5">
   
 
-  <h1>Billing Insurance Details:</h1>
+  <h1>Billing Insurance Details (As Of 2025):</h1>
   <hr>
 
 
@@ -74,7 +72,7 @@
       <div class="card-header" id="headingOne">
         <h2 class="mb-0">
           <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="" aria-controls="collapseOne">
-            Canada Life (11) || Assure
+            Canada Life (11) || Assure || Telus
           </button>
         </h2>
       </div>
@@ -84,8 +82,9 @@
           <ul>
             <li>Billing Code: AS</li>
             <li>Carrier: 11</li>
-            <li>Group: 6</li>
+            <li>Group: 6 Digits</li>
             <li>ID: 10 Digits + 2 Digits</li>
+            <img src="InsuranceCards/1.png" style="width: 50%">
           </ul>
         </div>
       </div>
@@ -94,7 +93,7 @@
       <div class="card-header" id="headingTwo">
         <h2 class="mb-0">
           <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            Canada Life (12) Public Service Health Care Plan || Canada Life
+            Canada Life (12) || Public Service Health Care Plan || Canada Life || Telus (Old)
           </button>
         </h2>
       </div>
@@ -102,50 +101,196 @@
         <div class="card-body">
           <ul>
             <li>Billing Code: CL</li>
-            <li>Carrier: 2 digits. -- E.g 12</li>
-            <li>Group: 5 digits -- E.g 52002</li>
+            <li>Carrier: 12</li>
+            <li>Group: 5-6 digits</li>
             <li>ID: 7-10 Digits + 2 Digits</li>
+            <li>https://studentrx.ca/misc/pshcp.html</li>
+            <img src="InsuranceCards/2.jpg" style="width: 50%">
+            <img src="InsuranceCards/PSHCP.jpg" style="width: 50%">
           </ul>
         </div>
       </div>
     </div>
     <div class="card">
-      <div class="card-header" id="headingThree">
+      <div class="card-header" id="headingTwo">
         <h2 class="mb-0">
           <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            Green Shield
+            Express Scripts (90) || Empire Life
           </button>
         </h2>
       </div>
-      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-        <div class="card-body">
-          <ul>
-            <li>Billing Code: GS</li>
-            <li>ID: 7-9 Characters</li>
-            <li>Patient Code: 2-3 Characters</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header" id="headingFour">
-        <h2 class="mb-0">
-          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-            Manulife (02) || EP
-          </button>
-        </h2>
-      </div>
-      <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+      <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
         <div class="card-body">
           <ul>
             <li>Billing Code: EP</li>
+            <li>Carrier: 90</li>
+            <li>Group: 6 digits</li>
+            <li>ID: 10 Digits</li>
+            <img src="InsuranceCards/3.png" style="width: 50%">
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            Assure (22) || Chambers Plan || Johnston Group || CINUP
+          </button>
+        </h2>
+      </div>
+      <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
+          <ul>
+            <li>Billing Code: AS</li>
+            <li>Carrier: 22</li>
+            <li>Group: 6 digits</li>
+            <li>ID: 10 Digits + 2 Digits</li>
+            <img src="InsuranceCards/4.jpg" style="width: 50%">
+            <img src="InsuranceCards/4.1.jpg" style="width: 50%">
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+            Express Scripts (02) || Manulife Financial
+          </button>
+        </h2>
+      </div>
+      <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
+          <ul>
+            <li>Billing Code: EP</li>
+            <li>Carrier: 02</li>
+            <li>Group: 7 digits</li>
+            <li>ID: 9 digits</li>
+            <img src="InsuranceCards/5.jpg" style="width: 50%">
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+            Equitable Life (29) || Telus || Assure
+          </button>
+        </h2>
+      </div>
+      <div id="collapseSix" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
+          <ul>
+            <li>Billing Code: AS</li>
+            <li>Carrier: 29</li>
+            <li>Group: 6 digits</li>
+            <li>ID: 10 digits + 2 digits</li>
+            <img src="InsuranceCards/6.png" style="width: 50%">
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+            Desjardins (51) || Telus || Assure
+          </button>
+        </h2>
+      </div>
+      <div id="collapseSeven" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
+          <ul>
+            <li>Billing Code: AS</li>
+            <li>Carrier: 51</li>
+            <li>Group: 7 digits</li>
+            <li>ID: 9 digits</li>
+            <li>Note: For carriers 23, 51 and 72 omit 2-digit issue number "01" from Client ID</li>
+            <img src="InsuranceCards/7.jpg" style="width: 50%">
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+            Assure (44) || Maximum Benefit || First Canadian || Johnston Group
+          </button>
+        </h2>
+      </div>
+      <div id="collapseEight" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
+          <ul>
+            <li>Billing Code: AS</li>
+            <li>Carrier: 44</li>
+            <li>Group: 6 digits</li>
+            <li>ID: 10 digits + 2 Digits</li>
+            <img src="InsuranceCards/8.jpg" style="width: 50%">
+            <img src="InsuranceCards/8.1.jpg" style="width: 50%">
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+            STI Technologies Ltd. (32) || Express Scripts || Innovicare || E.g Brand Cards 
+          </button>
+        </h2>
+      </div>
+      <div id="collapseNine" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
+          <ul>
+            <li>Billing Code: EP</li>
+            <li>Carrier: 32</li>
+            <li>Group: 3 digits</li>
+            <li>ID: 15 Characters</li>
+            <img src="InsuranceCards/9.jpg" style="width: 50%">
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+            GreenShield
+          </button>
+        </h2>
+      </div>
+      <div id="collapseTen" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
+          <ul>
+            <li>Billing Code: GS</li>
+            <li>Carrier: </li>
+            <li>Group: </li>
             <li>ID: 7-9 Characters</li>
-            <li>Patient Code: 2-3 Characters</li>
+            <li>Patient Code: 3 Digits</li>
+            <img src="InsuranceCards/10.png" style="width: 50%">
+            <img src="InsuranceCards/10.1.png" style="width: 50%">
+            <img src="InsuranceCards/10.3.jpg" style="width: 50%">
+
           </ul>
         </div>
       </div>
     </div>
   </div>
+
+
+  <h1 class="mt-5">Other Resources:</h1>
+  <hr>
+  <ul>
+    <li>
+      <a href="https://www.studentrx.ca/misc/cid.html">Miscellaneous Resources</a>
+    </li>    
+  </ul>
+  <img src="InsuranceCards/Sample1.jpg">
+  <img src="InsuranceCards/Sample2.jpg">
+  <img src="InsuranceCards/Sample3.jpg">
 
 
   <h1 class="mt-5">Billing Insurance Video:</h1>

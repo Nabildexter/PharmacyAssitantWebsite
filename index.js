@@ -4,27 +4,35 @@ console.log("");
 
 renderTime();
 
+function addZero(i) {
+  if (i < 10) {i = "0" + i}
+  return i;
+}
+
+
 function renderTime(){
 
 	var d = new Date();
+	hh = d.getHours();
+	mm = d.getMinutes();
 	
 	//BC
-	document.getElementById("BCTime").innerHTML = document.getElementById("BCTime").innerHTML + d.getHours() + ":" + d.getMinutes();
+	document.getElementById("BCTime").innerHTML = document.getElementById("BCTime").innerHTML + addZero(hh) + ":" + addZero(mm);
 
 	//AB
-	document.getElementById("ABTime").innerHTML = document.getElementById("ABTime").innerHTML + (d.getHours()+1) + ":" + d.getMinutes();
+	document.getElementById("ABTime").innerHTML = document.getElementById("ABTime").innerHTML + addZero((hh+1)) + ":" + addZero(mm);
 
 	//SK
-	document.getElementById("SKTime").innerHTML = document.getElementById("SKTime").innerHTML + (d.getHours()+2) + ":" + d.getMinutes();
+	document.getElementById("SKTime").innerHTML = document.getElementById("SKTime").innerHTML + addZero((hh+2)) + ":" + addZero(mm);
 
 	//MB
-	document.getElementById("MBTime").innerHTML = document.getElementById("MBTime").innerHTML + (d.getHours()+2) + ":" + d.getMinutes();
+	document.getElementById("MBTime").innerHTML = document.getElementById("MBTime").innerHTML + addZero((hh+2)) + ":" + addZero(mm);
 	
 	//ON
-	document.getElementById("ONTime").innerHTML = document.getElementById("ONTime").innerHTML +  (d.getHours()+3)+ ":" + d.getMinutes();
+	document.getElementById("ONTime").innerHTML = document.getElementById("ONTime").innerHTML +  addZero((hh+3))+ ":" + addZero(mm);
 	
 	//NL
-	document.getElementById("NLTime").innerHTML = document.getElementById("NLTime").innerHTML +  (d.getHours()+5) + ":" + d.getMinutes();
+	document.getElementById("NLTime").innerHTML = document.getElementById("NLTime").innerHTML +  addZero((hh+5)) + ":" + addZero(mm);
 }
 
 
@@ -280,6 +288,9 @@ function sigCase(num){
 		updateSigTable(QA, QTY, result, daySupply, Refills);
 
 	}
+	else {
+		alert("Feature Still Under Development")
+	}
 }
 
 
@@ -317,3 +328,52 @@ function sigCase(num){
 //QTY = 70;
 //QA = QTY + maxIntake * daysSupply * Refills
 //QA = 70+4*28*3 = 406
+
+
+
+function add(num){
+
+	form = document.getElementById("CapOrTab3").value;
+
+	textarea = document.getElementById("SigCanvas");
+
+	if(num===1){
+		textarea.value = textarea.value + "Take X " + form + " ";
+	}
+	else if (num===2){
+		textarea.value = textarea.value + "Y Times Daily ";
+	}
+	else if (num===3){
+		textarea.value = textarea.value + "For Z Days ";
+	}
+	else if (num===4){
+		textarea.value = textarea.value + "Then, ";
+	}
+	else if (num===5){
+		textarea.value = textarea.value + "onwards ";
+	}
+	else if (num===6){
+		textarea.value = textarea.value + "stop ";
+	}
+	else if (num===7){
+		textarea.value = textarea.value + "with ";
+	}
+	else if (num===8){
+		textarea.value = textarea.value + form + " ";
+	}
+	else if (num===9){
+		textarea.value = textarea.value + "discontinue ";
+	}
+	else if (num===10){
+		textarea.value = textarea.value + "Number ";
+	}
+	else if (num===11){
+		textarea.value = textarea.value + "(=Num) ";
+	}
+	else if (num===12){
+		textarea.value = textarea.value + ". ";
+	}
+	else{
+
+	}
+}
