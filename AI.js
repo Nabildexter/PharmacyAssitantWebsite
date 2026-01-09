@@ -71,6 +71,7 @@ async function handleImage(file) {
 function decodeSIG(text) {
   const sigMap = {
     po: "by mouth",
+    od: "once daily",
     bid: "twice daily",
     tid: "three times daily",
     qid: "four times daily",
@@ -78,12 +79,13 @@ function decodeSIG(text) {
     qam: "every morning",
     prn: "as needed",
     tab: "tablet",
-    cap: "capsule"
+    cap: "capsule",
+    t1c: "take 1 capsule",
+    t1t: "take 1 tablet"
   };
 
-  let normalized = text
-    .toLowerCase()
-    .replace(/[^\w\s]/g, " ");
+  //make input text basic to read
+  let normalized = text.toLowerCase().replace(/[^\w\s]/g, " ");
 
   let words = normalized.split(/\s+/);
 
