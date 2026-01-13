@@ -112,7 +112,7 @@
   <form class="mb-5">
     <div class="form-group">
       <label for="" id="">Form</label>
-      <select id="CapOrTab1" name="CapOrTab1">
+      <select id="CapOrTab4" name="CapOrTab4">
         <option value="Tablets">Tablets</option>
         <option value="Capsules">Capsules</option>
       </select>
@@ -147,7 +147,7 @@
 
 
 
-  <h2>(Single Capsule/Tablet) Taper-down Once Daily Onwards Sig Generator</h2>
+  <h2>(Single Capsule/Tablet) Taper-Down Once Daily Onwards Sig Generator</h2>
   <hr>
 
 
@@ -186,8 +186,66 @@
     <button type="button" class="btn btn-success" onclick="generateSig(2)">Generate</button>
   </form>
 
+ 
 
-  <h2>SIG Builder</h2>  
+  <h2>(Multi Capsule/Tablet) Tapering Onwards Sig Generator</h2>
+  <hr>
+  <h3 style="color: red">**FEATURE STILL BEING DEVELOPED**</h3>
+  <form class="mb-5">
+    <div class="form-group">
+      <label for="" id="">Form</label>
+      <select id="CapOrTab3" name="CapOrTab3">
+        <option value="Tablets">Tablets</option>
+        <option value="Capsules">Capsules</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="basePillStrength31" id="">Base Pill-No.1 Strength(e.g in mg)</label>
+      <input type="number" name="basePillStrength31" placeholder="e.g 75" id="basePillStrength31">
+    </div>
+    <div class="form-group">
+      <label for="basePillStrength32" id="">Base Pill-No.2 Strength(e.g in mg)</label>
+      <input type="number" name="basePillStrength32" placeholder="e.g 75" id="basePillStrength32">
+    </div>
+    <div class="form-group">
+      <label for="dailyFrquency3" id="">How Many Times Daily?</label>
+      <select id="dailyFrquency3" name="dailyFrquency3">
+        <option value="1">Once Daily</option>
+        <option value="2">Twice Daily</option>
+        <option value="3">Three Times Daily</option>
+        <option value="4">Four Times Daily</option>
+      </select>
+
+<!--       <label for="dailyFrquency3" id="">How Many Times Daily?</label>
+      <input type="number" name="dailyFrquency3" placeholder="e.g 1" id="dailyFrquency3"> -->
+    </div>
+    <div class="form-group">
+      <label for="baseStartStrength3" id="">Base Starting Tapering Dose Strength (e.g in mg)</label>
+      <input type="number" name="baseStartStrength3" placeholder="e.g 75" id="baseStartStrength3">
+    </div>  
+    <div class="form-group">
+      <label for="baseDecrement3" id="">Base Increment or Decrement (e.g -25mg every interval or 25mg every interval)</label>
+      <input type="number" name="baseDecrement3" placeholder="e.g -25 or 25" id="baseDecrement3">
+    </div>
+    <div class="form-group">
+      <label for="IntervalDuration3" id="">Interval Duration in Days (e.g Every 7 days)</label>
+      <input type="number" name="IntervalDuration3" placeholder="e.g 7" id="IntervalDuration3">
+    </div>
+    <div class="form-group">
+    <label for="IntervalCount3" id="">How Many Intervals (e.g 3 Iterations Of 7 days)</label>
+    <input type="number" name="IntervalCount3" placeholder="e.g 3" id="IntervalCount3">
+    </div>
+    <div class="form-group">
+    <label for="RefillCount3" id="">How Many Repeats/Refills (e.g 3 Refills Onwards)</label>
+    <input type="number" name="RefillCount3" placeholder="e.g 3" id="RefillCount3">
+    </div>    
+    <button type="button" class="btn btn-success" onclick="generateSig(3)">Generate</button>
+  </form>
+
+
+
+
+  <h2 class="mt-5">SIG Builder</h2>  
   <hr>
 
   <form class="mb-5">
@@ -195,7 +253,7 @@
 
     <div class="form-group">
       <label for="" id="">Form</label>
-      <select id="CapOrTab3" name="CapOrTab3">
+      <select id="CapOrTab4" name="CapOrTab4">
         <option value="Tablets">Tablets</option>
         <option value="Capsules">Capsules</option>
 <!--         <option value="ml">Eyedrops</option>

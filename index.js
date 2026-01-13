@@ -356,7 +356,7 @@ function sigCase(num){
 
 function add(num){
 
-	form = document.getElementById("CapOrTab3").value;
+	form = document.getElementById("CapOrTab4").value;
 
 	textarea = document.getElementById("SigCanvas");
 
