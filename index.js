@@ -17,22 +17,45 @@ function renderTime(){
 	mm = d.getMinutes();
 	
 	//BC
-	document.getElementById("BCTime").innerHTML = document.getElementById("BCTime").innerHTML + addZero(hh) + ":" + addZero(mm);
+	document.getElementById("BCTime").innerHTML = document.getElementById("BCTime").innerHTML + addZero(hh%24) + ":" + addZero(mm);
+	renderIfOpenOrClose("BCTime", (hh));
 
 	//AB
-	document.getElementById("ABTime").innerHTML = document.getElementById("ABTime").innerHTML + addZero((hh+1)) + ":" + addZero(mm);
+	document.getElementById("ABTime").innerHTML = document.getElementById("ABTime").innerHTML + addZero((hh+1)%24) + ":" + addZero(mm);
+	renderIfOpenOrClose("ABTime", (hh+1));
 
 	//SK
-	document.getElementById("SKTime").innerHTML = document.getElementById("SKTime").innerHTML + addZero((hh+2)) + ":" + addZero(mm);
+	document.getElementById("SKTime").innerHTML = document.getElementById("SKTime").innerHTML + addZero((hh+2)%24) + ":" + addZero(mm);
+	renderIfOpenOrClose("SKTime", (hh+2));
 
 	//MB
-	document.getElementById("MBTime").innerHTML = document.getElementById("MBTime").innerHTML + addZero((hh+2)) + ":" + addZero(mm);
-	
+	document.getElementById("MBTime").innerHTML = document.getElementById("MBTime").innerHTML + addZero((hh+2)%24) + ":" + addZero(mm);
+	renderIfOpenOrClose("MBTime", (hh+2));
+
 	//ON
-	document.getElementById("ONTime").innerHTML = document.getElementById("ONTime").innerHTML +  addZero((hh+3))+ ":" + addZero(mm);
-	
+	document.getElementById("ONTime").innerHTML = document.getElementById("ONTime").innerHTML +  addZero((hh+3)%24)+ ":" + addZero(mm);
+	renderIfOpenOrClose("ONTime", (hh+3));
+
 	//NL
-	document.getElementById("NLTime").innerHTML = document.getElementById("NLTime").innerHTML +  addZero((hh+5)) + ":" + addZero(mm);
+	document.getElementById("NLTime").innerHTML = document.getElementById("NLTime").innerHTML +  addZero((hh+5)%24) + ":" + addZero(mm);
+	renderIfOpenOrClose("NLTime", (hh+5));
+
+}
+
+
+function renderIfOpenOrClose(idName, hour){
+
+	//Select
+	target = document.getElementById(idName);
+
+	//Change Color if
+	//hour is greater than 21 ie 9PM
+	//OR
+	//hour is less than 9 ie 9AM
+	if(hour%24 >= 21 || hour%24 < 9){
+		target.style.color = "red";
+	}
+
 }
 
 
@@ -75,7 +98,7 @@ function reAuthCopy(num){
 		text += "Would you like to authorize this early dispense? Cheers.\n";
 		text += "Cheers, Thank You.\n"
 		text += "***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****\n"
-		copyAlert(1);
+		copyAlert(2);
 
 	}
 	if(num===5){
@@ -86,7 +109,7 @@ function reAuthCopy(num){
 		text += "WWould you like to authorize this early dispense and replacement supply?\n";
 		text += "Cheers, Thank You.\n"
 		text += "***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****\n"
-		copyAlert(1);
+		copyAlert(2);
 
 	}
 
@@ -103,7 +126,7 @@ function copyAlert(num){
 	component = document.getElementById(res);
 
 	// Output for 3 seconds
-	component.innerHTML = `<div class="alert alert-success" role="alert"> Copied Success </div>`	
+	component.innerHTML = `<div class="alert alert-success" role="alert"> Copied Successfully </div>`	
 
 	// Wait 3 sconds, then remove it
     // Wait 3 seconds, then remove it
@@ -133,7 +156,7 @@ function generateSig(num){
 
 function sigCase(num){
 
-	if(num==1){
+	if(num===1){
 
 
 		//Initialize QA and QTY and other fields
@@ -211,7 +234,7 @@ function sigCase(num){
 		updateSigTable(QA, QTY, result, daySupply, Refills);
 
 	}
-	if(num===2) {
+	else if(num===2) {
 
 		//Initialize QA and QTY and other fields
 		var QA = 0;
@@ -329,7 +352,7 @@ function sigCase(num){
 //QA = QTY + maxIntake * daysSupply * Refills
 //QA = 70+4*28*3 = 406
 
-
+ 
 
 function add(num){
 
@@ -337,43 +360,150 @@ function add(num){
 
 	textarea = document.getElementById("SigCanvas");
 
-	if(num===1){
-		textarea.value = textarea.value + "Take X " + form + " ";
+	const case1 = ["1", "1.1", "1.2", "1.3", "1.4"];
+	const case2 = ["2", "2.1", "2.2", "2.3", "2.4"];
+	const case3 = ["3", "3.1", "3.2", "3.3", "3.4", "3.5", "3.6", "3.7", "3.14", "3.21", "3.28"];
+	const case14 = ["14", "14.1", "14.2", "14.3", "14.4"];
+
+	console.log("Num: " + num);
+	console.log("Type: " + (typeof num));
+
+
+	if (case1.includes(num.toString())) {
+	    renderIntakeDose(num, form)
 	}
-	else if (num===2){
-		textarea.value = textarea.value + "Y Times Daily ";
+
+	else if (case2.includes(num.toString())){
+		renderDailyFrequency(num, form);
 	}
-	else if (num===3){
-		textarea.value = textarea.value + "For Z Days ";
+	else if (case3.includes(num.toString())){
+		renderDayDuration(num, form);
 	}
 	else if (num===4){
-		textarea.value = textarea.value + "Then, ";
+		textarea.value = textarea.value + "Then ";
 	}
 	else if (num===5){
-		textarea.value = textarea.value + "onwards ";
+		textarea.value = textarea.value + "Onwards ";
 	}
 	else if (num===6){
-		textarea.value = textarea.value + "stop ";
+		textarea.value = textarea.value + "Stop ";
 	}
 	else if (num===7){
-		textarea.value = textarea.value + "with ";
+		textarea.value = textarea.value + "With ";
 	}
 	else if (num===8){
 		textarea.value = textarea.value + form + " ";
 	}
 	else if (num===9){
-		textarea.value = textarea.value + "discontinue ";
+		textarea.value = textarea.value + "Discontinue ";
 	}
 	else if (num===10){
 		textarea.value = textarea.value + "Number ";
 	}
 	else if (num===11){
-		textarea.value = textarea.value + "(=Num) ";
+		textarea.value = textarea.value + "(=Num mg) ";
 	}
 	else if (num===12){
 		textarea.value = textarea.value + ". ";
 	}
-	else{
-
+	else if (num===13){
+		textarea.value = textarea.value + ", ";
 	}
+	else if (case14.includes(num.toString())){
+		renderWeekDuration(num, form);
+	}
+	else{
+		alert("Feature Still Being Worked On!\n");
+	}
+}
+
+function renderIntakeDose(num, form){
+
+	//Select output canvas
+	textarea = document.getElementById("SigCanvas");
+
+	if(num === 1){
+		textarea.value = textarea.value + "Take X " + form + " ";
+	} 
+	else if (num === 1.1){
+		textarea.value = textarea.value + "Take 1 " + form.substring(0, form.length-1) + " ";
+	}
+	else if (num === 1.2){
+		textarea.value = textarea.value + "Take 2 " + form + " ";
+	}
+	else if (num === 1.3){
+		textarea.value = textarea.value + "Take 3 " + form + " ";
+	}
+	else if (num === 1.4){
+		textarea.value = textarea.value + "Take 4 " + form + " ";
+	}
+}
+
+
+function renderDailyFrequency(num, form){
+
+	//Select output canvas
+	textarea = document.getElementById("SigCanvas");
+
+	if(num === 2){
+		textarea.value = textarea.value + "Y Times Daily ";
+	} 
+	else if (num === 2.1){
+		textarea.value = textarea.value + "Once Daily ";
+	}
+	else if (num ===2.2){
+		textarea.value = textarea.value + "Twice Daily ";
+	}
+	else if (num === 2.3){
+		textarea.value = textarea.value + "Three Times Daily ";
+	}
+	else if (num === 2.4){
+		textarea.value = textarea.value + "Four Times Daily ";
+	}
+}
+
+function renderDayDuration(num, form){
+
+	//Select output canvas
+	textarea = document.getElementById("SigCanvas");
+
+	//Default Days
+	if(num === 3){
+		textarea.value = textarea.value + "For Z Days ";
+	}
+	else if (num === 3.1 ){
+		textarea.value = textarea.value + "For 1 Day ";
+	}
+	//For Remaining Days
+	else {
+		textarea.value = textarea.value + "For " + num.toString().substring(2) + " Days ";
+		}
+}
+
+function renderWeekDuration(num, form){
+
+	//Select output canvas
+	textarea = document.getElementById("SigCanvas");
+
+	//Default Days
+	if(num === 14){
+		textarea.value = textarea.value + "For i Weeks ";
+	}
+	else if (num === 14.1 ){
+		textarea.value = textarea.value + "For 1 Week ";
+	}
+	//For Remaining Days
+	else {
+		textarea.value = textarea.value + "For " + num.toString().substring(3) + " Weeks ";
+		}
+
+}
+
+function renderGeneral(input){
+
+	//Select output canvas
+	textarea = document.getElementById("SigCanvas");
+
+	//Output
+	textarea.value = textarea.value + input + " ";
 }

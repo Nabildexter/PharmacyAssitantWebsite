@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rx Assitant Tool</title>
+  <title>Faxes Help</title>
 
 
   <!-- Boostrap Styles -->
@@ -9,6 +9,10 @@
 
 <!-- Personal Styles -->
 <link rel="stylesheet" type="text/css" href="index.css">
+
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
 
 
 </head>
@@ -28,6 +32,9 @@
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="FaxHelp.html">Faxes<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="DINs.html">DINS/PINS<span class="sr-only">(current)</span></a>
       </li>
       </li>
       <li class="nav-item active">
@@ -62,15 +69,17 @@
 </nav>
 
 
-  <!--Copy Output-->
-  <div class="copyStatus1" id="copyStatus1">
-  </div>
 
 
 <div class="container m-5">
     
-  <h1>Refills ReAuth to Physicians:</h1>
+  <h1>Refills Re-Authorization to Physicians Template:</h1>
   <hr>
+
+
+  <!--Copy Output-->
+  <div class="copyStatus1" id="copyStatus1">
+  </div>
 
   <table class="table">
     <thead>
@@ -109,9 +118,13 @@
     </tbody>
   </table>
 
-  <h1>Early Dispense Request:</h1>
+  <h1>Early Dispense Request/Authorization Template:</h1>
   <h1>(Vacation, Early Dispense, Lost Supply, etc) :</h1>
   <hr>
+
+  <!--Copy Output-->
+  <div class="copyStatus2" id="copyStatus2">
+  </div>
 
   <table class="table">
     <thead>
@@ -136,7 +149,7 @@
           <p>***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****</p>
         </td>
         <td>
-          <button type="button" class="btn btn-success" onclick="reAuthCopy(4)">Copy</button>
+          <button type="button" class="btn btn-success" onclick="reAuthCopy(4, 2)">Copy</button>
         </td>
       </tr>
       <tr>
@@ -152,7 +165,7 @@
           <p>***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****</p>
         </td>
         <td>
-          <button type="button" class="btn btn-success" onclick="reAuthCopy(5)">Copy</button>
+          <button type="button" class="btn btn-success" onclick="reAuthCopy(5, 2)">Copy</button>
         </td>
       </tr>
     </tbody>

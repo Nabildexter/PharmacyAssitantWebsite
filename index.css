@@ -16,10 +16,13 @@
 
 /*Navigation Bar*/
 .nav-item{
-
+	text-decoration-color: white;
 }
-.nav-item:hover{
-	scale: 1.10;
+.nav-item.active:hover{
+	scale: 1.1;
+	text-decoration: underline;
+	text-decoration-color: white;
+	transition: 0.5s;
 }
 .navbar-dark .navbar-nav .nav-link.disabled {
 	color: yellow;
@@ -52,6 +55,11 @@
 	animation-iteration-count: 1;
 }
 
+
+
+.btn, .btn-success, .ml-2{
+	margin-top: 1px;
+}
 
 .pic{
   height: 500px;

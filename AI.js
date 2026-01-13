@@ -83,7 +83,7 @@ function decodeSIG(text) {
     t1c: "take 1 capsule",
     t1t: "take 1 tablet"
   };
-
+  
   //make input text basic to read
   let normalized = text.toLowerCase().replace(/[^\w\s]/g, " ");
 
