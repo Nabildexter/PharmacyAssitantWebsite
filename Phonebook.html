@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AI Help</title>
+  <title>Quick Phonebook</title>
 
 
-	<!-- Boostrap Styles -->
+  <!-- Boostrap Styles -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
 <!-- Personal Styles -->
@@ -14,11 +14,11 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
 
+
 </head>
 <body>
+  
 
-
-<!-- Navbar -->
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark RexallGreenLight1">
   <a class="navbar-brand" href="index.html">Rx Assistant</a>
@@ -76,87 +76,126 @@
 
 
 
-<!-- Container -->
-<div class="container mt-5">
 
-  <h2>Let A.I Transcribe A Percription</h2>
-  <h2>(Tesseract OCR)</h2>
+<div class="container m-5">
+    
+  <h1>Quick Phone Numbers:</h1>
   <hr>
-  <h3 style="color: red">**FEATURE STILL BEING DEVELOPED**</h3>
-  <h3 style="color: red">**DO NOT PASTE CUSTOMER/PATIENT INFORMATION EVER**</h3>
 
 
-
-
-<div class="container mb-5">
-  <div class="row">
-
-    <div class="col-4">
-
-      <h4>Details:</h4>
-      <div class="" style="width: 100%; height: 500px; border: solid 1px">
-        
-        <pre id="rawText"></pre>
-        <pre id="sigOutput"></pre>
-
-
-      </div>
-
-<!--       <button type="button" class="btn btn-success mt-2" onclick="generateSig(3)">Generate Data</button>
- -->
-
-
-<!--       <h4>Patient:</h4>
-      <textarea class=""></textarea>
-
-      <h4>Drug:</h4>
-      <textarea class=""></textarea>
-
-
-      <h4>SIG:</h4>
-      <textarea class=""></textarea> -->
-<!-- 
-      <button type="button" class="btn btn-success"  onclick="alert('Feature Is Still Being Developed\nComing Soon Hopefully!')">AI Transcribe</button> -->
-
-    </div>
-
-    <div class="col-6">
-      <h4>Paste Prescription Image:</h4>
-      
-      <div class="pic" id="pic">
-        
-                  <!--
-        Source - https://stackoverflow.com/a
-        Posted by Jake, modified by community. See post 'Timeline' for change history
-        Retrieved 2026-01-07, License - CC BY-SA 4.0
-        -->
-
-        <form class="d-none" id="new_document_attachment" method="post" enctype="multipart/form-data">
-          <div class="actions"><input type="submit" name="commit" value="Submit" /></div>
-          <input type="file" name="document_attachment_doc" id="document_attachment_doc" />
-        </form>
-
-
-      </div>
-
-    </div>
-
+  <!--Copy Output-->
+  <div class="copyStatus1" id="copyStatus1">
   </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Entity</th>
+        <th scope="col">Phone Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row" style="background-color: lightgrey;">1</th>
+        <td style="background-color: lightgrey;">Pharmacare (Lower Mainland)</td>
+        <td style="background-color: lightgrey;">604 - 683 - 7151</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Pharmacare (Rest of BC) (Toll-Free)</td>
+        <td>1 - 800 - 663 - 7100</td>
+      </tr>
+      <tr>
+        <th scope="row" style="background-color: lightgrey;">3</th>
+        <td style="background-color: lightgrey;">Pharmacare Pharmacy/Physician Help Desk (Lower Mainland)</td>
+        <td style="background-color: lightgrey;">604 - 682 - 7120</td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>Pharmacare Pharmacy/Physician Help Desk (Rest of BC) (Toll-Free)</td>
+        <td>1 - 800 - 554 - 0225 </td>
+      </tr>
+      <tr>
+        <th scope="row" style="background-color: lightgrey;">5</th>
+        <td style="background-color: lightgrey;">Pacific Blue Cross (Lower Mainland)</td>
+        <td style="background-color: lightgrey;">604 - 419 - 2000</td>
+      </tr>
+      <tr>
+        <th scope="row">6</th>
+        <td>Pacific Blue Cross (Toll-Free)</td>
+        <td>1 - 877 - 722 - 2583</td>
+      </tr>
+      <tr>
+        <th scope="row" style="background-color: lightgrey;">7</th>
+        <td style="background-color: lightgrey;">Greenshield Customer Support</td>
+        <td style="background-color: lightgrey;">1- 888 - 711 - 1119</td>
+      </tr>
+      <tr>
+        <th scope="row">8</th>
+        <td>Manulife || Express Scritps || EP</td>
+        <td>1 - 866 - 407 - 7878</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h1>Quick Pharmacy Phone Bypass:</h1>
+  <hr>
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Entity</th>
+        <th scope="col">Instructions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row" style="background-color: lightgrey;">1</th>
+        <td style="background-color: lightgrey;">Rexall</td>
+        <td style="background-color: lightgrey;">Spam the Number 3 Until Pharmacy Rings</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Shoppers</td>
+        <td>Press 3 (General Inquiry), Press 3 (Speak with Pharmacy Team), Press 5 (Other Request)</td>
+      </tr>
+      <tr>
+        <th scope="row" style="background-color: lightgrey;">3</th>
+        <td style="background-color: lightgrey;">London Drugs</td>
+        <td style="background-color: lightgrey;"></td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>Costco</td>
+        <td>Press 1 (English), Press 4 (Pharmacy), Press 1 (English), Press 0 (Speak to Pharmacy)</td>
+      </tr>
+      <tr>
+        <th scope="row" style="background-color: lightgrey;">5</th>
+        <td style="background-color: lightgrey;">Wallmart</td>
+        <td style="background-color: lightgrey;">Press 1 (Pharmacy)</td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>SaveOnFoods</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 
-<!-- <div id="pic" style="width:300px;height:200px;border:1px solid #ccc;"></div>
-
-<pre id="rawText"></pre>
-<pre id="sigOutput"></pre>
 
 
-</div>
-
- -->
 
 
-<!-- Boostrap Scripts -->
+
+
+
+
+	<!-- Boostrap Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
@@ -164,12 +203,6 @@
 
 <!-- Native JS Script -->
 <script type="text/javascript" src="index.js"></script>
-<!-- Native AI JS Script  -->
-<script type="text/javascript" src="AI.js"></script>
-
-<!-- Tesseract.js -->
-<script src="https://unpkg.com/tesseract.js@5/dist/tesseract.min.js"></script>
-
 
 </body>
 </html>

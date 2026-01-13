@@ -17,6 +17,7 @@
 /*Navigation Bar*/
 .nav-item{
 	text-decoration-color: white;
+	font-size: 14.5px;
 }
 .nav-item.active:hover{
 	scale: 1.1;

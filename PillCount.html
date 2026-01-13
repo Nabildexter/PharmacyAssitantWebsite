@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AI Help</title>
+  <title>AI Pill Count</title>
 
 
 	<!-- Boostrap Styles -->
@@ -18,7 +18,6 @@
 <body>
 
 
-<!-- Navbar -->
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark RexallGreenLight1">
   <a class="navbar-brand" href="index.html">Rx Assistant</a>
@@ -79,11 +78,9 @@
 <!-- Container -->
 <div class="container mt-5">
 
-  <h2>Let A.I Transcribe A Percription</h2>
-  <h2>(Tesseract OCR)</h2>
+  <h2>Let A.I Count Your Pills</h2>
   <hr>
   <h3 style="color: red">**FEATURE STILL BEING DEVELOPED**</h3>
-  <h3 style="color: red">**DO NOT PASTE CUSTOMER/PATIENT INFORMATION EVER**</h3>
 
 
 
@@ -93,35 +90,18 @@
 
     <div class="col-4">
 
-      <h4>Details:</h4>
-      <div class="" style="width: 100%; height: 500px; border: solid 1px">
+      <h4>Count:</h4>
+      <div class="" style="width: 100%; height: 100px; border: solid 1px">
         
-        <pre id="rawText"></pre>
-        <pre id="sigOutput"></pre>
+        <h5 id="pilLCountOutput"></h5>
 
 
       </div>
 
-<!--       <button type="button" class="btn btn-success mt-2" onclick="generateSig(3)">Generate Data</button>
- -->
-
-
-<!--       <h4>Patient:</h4>
-      <textarea class=""></textarea>
-
-      <h4>Drug:</h4>
-      <textarea class=""></textarea>
-
-
-      <h4>SIG:</h4>
-      <textarea class=""></textarea> -->
-<!-- 
-      <button type="button" class="btn btn-success"  onclick="alert('Feature Is Still Being Developed\nComing Soon Hopefully!')">AI Transcribe</button> -->
-
     </div>
 
     <div class="col-6">
-      <h4>Paste Prescription Image:</h4>
+      <h4>Take a Picture:</h4>
       
       <div class="pic" id="pic">
         
@@ -145,15 +125,6 @@
 </div>
 
 
-<!-- <div id="pic" style="width:300px;height:200px;border:1px solid #ccc;"></div>
-
-<pre id="rawText"></pre>
-<pre id="sigOutput"></pre>
-
-
-</div>
-
- -->
 
 
 <!-- Boostrap Scripts -->
@@ -164,12 +135,9 @@
 
 <!-- Native JS Script -->
 <script type="text/javascript" src="index.js"></script>
-<!-- Native AI JS Script  -->
-<script type="text/javascript" src="AI.js"></script>
 
-<!-- Tesseract.js -->
-<script src="https://unpkg.com/tesseract.js@5/dist/tesseract.min.js"></script>
-
+<!-- Native AI Pill Count Script -->
+<script type="text/javascript" src="PillCount.js"></script>
 
 </body>
 </html>
