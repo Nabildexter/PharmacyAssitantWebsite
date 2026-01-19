@@ -4,7 +4,6 @@ console.log("");
 
 //Keep Global Variable for Caching
 var originalSigText = "N/A";
-document.getElementById("SIGout").innerHTML = "N/A";
 
 renderTime();
 
@@ -166,6 +165,8 @@ function updateSigTable(QA, QTY, SIG, DaysSuppy, Refills){
 
 // Sig Generators
 function generateSig(num){
+
+	document.getElementById("SIGout").innerHTML = "N/A";
 	sigCase(num);
 }
 
