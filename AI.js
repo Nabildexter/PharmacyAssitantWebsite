@@ -72,6 +72,8 @@ function decodeSIG(text) {
   const sigMap = {
     po: "by mouth",
     od: "once daily",
+    "o.d": "once daily",
+    "1d": "once daily",
     bid: "twice daily",
     tid: "three times daily",
     qid: "four times daily",
@@ -81,9 +83,15 @@ function decodeSIG(text) {
     tab: "tablet",
     cap: "capsule",
     t1c: "take 1 capsule",
-    t1t: "take 1 tablet"
+    tic: "take 1 capsule",
+    t1t: "take 1 tablet",
+    tit: "take 1 tablet",
+    t2c: "take 2 capsules",
+    t2t: "take 2 tablets",
+    tt: "take 2 tablets"
   };
   
+
   //make input text basic to read
   let normalized = text.toLowerCase().replace(/[^\w\s]/g, " ");
 

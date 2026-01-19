@@ -2,6 +2,10 @@ console.log("JS Succesfully Connected!");
 console.log("-------");
 console.log("");
 
+//Keep Global Variable for Caching
+var originalSigText = "N/A";
+document.getElementById("SIGout").innerHTML = "N/A";
+
 renderTime();
 
 function addZero(i) {
@@ -106,13 +110,23 @@ function reAuthCopy(num){
 		text += "Good Morning Dr.\n";
 		text += "Patient has lost/damaged their medication dispense.\n";
 		text += "They will be dispensing X days early.\n";
-		text += "WWould you like to authorize this early dispense and replacement supply?\n";
+		text += "Would you like to authorize this early dispense and replacement supply?\n";
 		text += "Cheers, Thank You.\n"
 		text += "***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****\n"
 		copyAlert(2);
 
 	}
+	if(num===6){
+		text = "***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****\n";
+		text += "Good Morning Dr.\n";
+		text += "Patient is requesting an early dispense of their medications.\n";
+		text += "They are requesting a dispensing X days early.\n";
+		text += "Would you like to authorize this early dispense?\n";
+		text += "Cheers, Thank You.\n"
+		text += "***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****\n"
+		copyAlert(2);
 
+	}
   // Copy the text inside the text field
   navigator.clipboard.writeText(text)
 }
@@ -142,9 +156,10 @@ function updateSigTable(QA, QTY, SIG, DaysSuppy, Refills){
 	document.getElementById("QAout").innerHTML = "QA: " + QA + " "	;
 	document.getElementById("QTYout").innerHTML = "QTY: " + QTY + " ";
 	document.getElementById("SIGout").innerHTML = SIG;
-	document.getElementById("DaySupplyOut").innerHTML = "Days Supply " + DaysSuppy + " ";
+	document.getElementById("DaySupplyOut").innerHTML = "Days Supply: " + DaysSuppy + " ";
 	document.getElementById("Refillsout").innerHTML = "Refills: " + Refills + " ";
 
+	originalSigText = SIG;
 }
 
 
@@ -155,6 +170,13 @@ function generateSig(num){
 }
 
 function sigCase(num){
+
+	dailyFrequencyStrings = ["Once Daily", "Twice Daily", "Three Times Daily", "Four Times Daily"];
+
+	// console.log(dailyFrequencyString[0]);
+	// console.log(dailyFrequencyString[1]);
+	// console.log(dailyFrequencyString[2]);
+	// console.log(dailyFrequencyString[3]);
 
 	if(num===1){
 
@@ -173,6 +195,10 @@ function sigCase(num){
 		var capOrTab1 = document.getElementById("CapOrTab1").value;
 		var maxIntake = 0;
 		var daySupply = Duration*Intervals;
+		var dailyFrequency = document.getElementById("dailyFrequency1").value;
+		var dailyFrequencyString = dailyFrequencyStrings[dailyFrequency-1]; 
+
+		console.log(dailyFrequency + " times daily");
 
 
 		//Testing
@@ -192,7 +218,7 @@ function sigCase(num){
 
 		//QTY To dispense
 		for(var i = 0; i < Intervals; i++){
-			QTY = QTY + (StartDose+(i*scaleIncrease))*Duration;
+			QTY = QTY + (StartDose+(i*scaleIncrease))*Duration*dailyFrequency;
 			console.log((StartDose+(i*scaleIncrease))*Duration);
 		}
 
@@ -200,8 +226,9 @@ function sigCase(num){
 
 
 		//QA total
-		console.log("LastDose is : " + LastDosage + " " + CapOrTab1)
-		QA = QTY + LastDosage*daySupply*Refills;
+		console.log("LastDose is : " + LastDosage + " " + CapOrTab1.value + " " + dailyFrequencyString)
+		QA = QTY + LastDosage*dailyFrequency*daySupply*Refills;
+		console.log("QA is : " + QTY + " + " + LastDosage +"*"+dailyFrequency+"*"+daySupply+"*"+Refills + " = " + QA);
 
 	 	//Day Supply
 	 	daySupply = Intervals*Duration;
@@ -217,13 +244,19 @@ function sigCase(num){
 			amount = StartDose + (i*scaleIncrease);
 
 			if(i<1){
-				result = result + "Take " + amount+ " " + capOrTab1.substring(0, capOrTab1.length-1) + "(=" + amount*base + "mg)" +" By Mouth Once Daily For "  + Duration + " days. Then,\n";  
+
+				if(StartDose<=1){
+					result = result + "Take " + amount + " " + capOrTab1.substring(0, capOrTab1.length-1) + " (=" + amount*base + "mg)" +" By Mouth " + dailyFrequencyString + " For "  + Duration + " days. Then,\n";  
+
+				} else {
+					result = result + "Take " + amount + " " + capOrTab1 + " (=" + amount*base + "mg)" +" By Mouth " + dailyFrequencyString + " For "  + Duration + " days. Then,\n";  
+				}
 			}
 			else if(i<Intervals-1){	
-				result = result + "Take " + amount+ " " + capOrTab1 + "(=" + amount*base + "mg)" +" By Mouth Once Daily For "  + Duration + " days. Then,\n";  
+				result = result + "Take " + amount + " " + capOrTab1 + " (=" + amount*base + "mg)" +" By Mouth " + dailyFrequencyString + " For "  + Duration + " days. Then,\n";  
 			}
 			else{
-				result = result + "Take " + amount + " " + capOrTab1 + "(=" + amount*base + "mg)" +" By Mouth Once Daily Onwards.";  				
+				result = result + "Take " + amount + " " + capOrTab1 + " (=" + amount*base + "mg)" +" By Mouth " + dailyFrequencyString + " Onwards.";  				
 			}  
 		}
 		console.log("");
@@ -250,6 +283,8 @@ function sigCase(num){
 		var capOrTab2 = document.getElementById("CapOrTab2").value;
 		var maxIntake = 0;
 		var daySupply = Duration*Intervals;
+		var dailyFrequency = document.getElementById("dailyFrequency2").value;
+		var dailyFrequencyString = dailyFrequencyStrings[dailyFrequency-1]; 
 
 
 		//Testing
@@ -269,7 +304,7 @@ function sigCase(num){
 
 		//QTY To dispense
 		for(var i = 0; i < Intervals; i++){
-			QTY = QTY + (StartDose+(i*scaleIncrease))*Duration;
+			QTY = QTY + (StartDose+(i*scaleIncrease))*Duration*dailyFrequency;
 			console.log((StartDose+(i*scaleIncrease))*Duration);
 		}
 
@@ -277,8 +312,9 @@ function sigCase(num){
 
 
 		//QA total
-		console.log("LastDose is : " + LastDosage + " " + CapOrTab2)
-		QA = QTY + LastDosage*daySupply*Refills;
+		console.log("LastDose is : " + LastDosage + " " + CapOrTab2.value + " " + dailyFrequencyString)
+		QA = QTY + LastDosage*dailyFrequency*daySupply*Refills;
+		console.log("QA is : " + QTY + " + " + LastDosage +"*"+dailyFrequency+"*"+daySupply+"*"+Refills + " = " + QA);
 
 	 	//Day Supply
 	 	daySupply = Intervals*Duration;
@@ -294,13 +330,20 @@ function sigCase(num){
 			amount = StartDose + (i*scaleIncrease);
 
 			if(i<1){
-				result = result + "Take " + amount+ " " + capOrTab2.substring(0, capOrTab2.length-1) + "(=" + amount*base + "mg)" +" By Mouth Once Daily For "  + Duration + " days. Then,\n";  
+
+				if(StartDose<=1){
+					result = result + "Take " + amount + " " + capOrTab2.substring(0, capOrTab2.length-1) + " (=" + amount*base + "mg)" +" By Mouth " + dailyFrequencyString + " For "  + Duration + " days. Then,\n";  
+
+				} else {
+					result = result + "Take " + amount + " " + capOrTab2 + " (=" + amount*base + "mg)" +" By Mouth " + dailyFrequencyString + " For "  + Duration + " days. Then,\n";  
+				}
+
 			}
 			else if(i<Intervals-1){	
-				result = result + "Take " + amount+ " " + capOrTab2 + "(=" + amount*base + "mg)" +" By Mouth Once Daily For "  + Duration + " days. Then,\n";  
+				result = result + "Take " + amount+ " " + capOrTab2 + " (=" + amount*base + "mg)" +" By Mouth " + dailyFrequencyString + " For "   + Duration + " days. Then,\n";  
 			}
 			else{
-				result = result + "Take " + amount + " " + capOrTab2 + "(=" + amount*base + "mg)" +" By Mouth Once Daily Onwards.";  				
+				result = result + "Take " + amount + " " + capOrTab2 + " (=" + amount*base + "mg)" +" By Mouth " + dailyFrequencyString + " Onwards.";  				
 			}  
 		}
 		console.log("");
@@ -311,10 +354,140 @@ function sigCase(num){
 		updateSigTable(QA, QTY, result, daySupply, Refills);
 
 	}
+	else if(num===3){
+		MultiTaper();
+	}
+	else if(num===4){
+		SolutionHelper();
+	}
 	else {
 		alert("Feature Still Under Development")
 	}
 }
+
+
+function MultiTaper(){
+
+	//Extract
+	//Initialize QA and QTY and other fields
+	var QA = 0;
+	var QTY = 0;
+	var baseStartingDose = Number(document.getElementById("baseStartStrength3").value);
+	var base1 = document.getElementById("basePillStrength31").value;
+	var base2 = document.getElementById("basePillStrength32").value;
+	var scale = Number(document.getElementById("MultiTaperScale").value);
+	var Duration = document.getElementById("IntervalDuration3").value;
+	var Intervals = document.getElementById("IntervalCount3").value;
+	var Refills = document.getElementById("RefillCount3").value || 0;
+	var result = "";
+	var capOrTab2 = document.getElementById("CapOrTab2").value;
+	var maxIntake = 0;
+	var daySupply = Duration*Intervals;
+	var dailyFrequency = document.getElementById("dailyFrequency3").value;
+	var dailyFrequencyString = dailyFrequencyStrings[dailyFrequency-1]; 
+	var AllComboList = []
+	var Target = baseStartingDose;
+
+	console.log("Adding: " + scale + "mg");
+
+	//Math
+	for (var i = 0; i < Intervals; i++) {
+		AllComboList[i] = findMinTabletCombo(base1, base2, Target);
+		console.log("Target Dose: " + ((Target)+scale*i));
+		Target = Target + scale;
+	}
+
+	//Populate Table
+	console.log(AllComboList);
+	populateMultiTaperTable(Intervals, Duration, AllComboList, Refills, dailyFrequency, base1, base2);
+}
+
+
+function populateMultiTaperTable(Intervals, Duration, AllComboList, Refills, dailyFrequency, base1, base2){
+
+	dailyFrequencyStrings = ["Once Daily", "Twice Daily", "Three Times Daily", "Four Times Daily"];
+
+	//Target
+	TableBody = document.getElementById("MultiTaperBody");
+
+	//Erase dots
+	TableBody.innerHTML = "";
+
+
+	//Print Out Each Row
+	for (var i = Intervals; i > 0; i--) {
+
+		var dip1 = Number(AllComboList[i-1][0])*Number(base1);
+		var dip2 = Number(AllComboList[i-1][1])*Number(base2);
+
+		TableBody.innerHTML = `<tr> <td id=''>${i}</td> <td id=''>${AllComboList[i-1][0]} (=${dip1}mg)</td> <td id=''>${AllComboList[i-1][1]} (=${dip2}mg)</td> <td id=''>(Total=${AllComboList[i-1][2]}mg)</td> </tr>` + TableBody.innerHTML;
+	}
+
+
+	//Fill Footer
+
+	document.getElementById("MultiTaperDuration").innerHTML = Duration + " Days";
+	document.getElementById("MultiTaperTotalDays").innerHTML = Intervals*Duration;
+
+	sum1 = 0;
+	for(var i = 0; i < Intervals; i ++){
+		sum1 = sum1 + AllComboList[i][0]*dailyFrequency;
+	}
+	document.getElementById("MultiTaperQty1Total").innerHTML = sum1;
+	sum2 = 0;
+	for(var i = 0; i < Intervals; i ++){
+		sum2 = sum2 + AllComboList[i][1]*dailyFrequency;
+	}
+	document.getElementById("MultiTaperQty2Total").innerHTML = sum2;
+
+	document.getElementById("MultiTaperDailyFequency").innerHTML = dailyFrequencyStrings[dailyFrequency-1];
+	document.getElementById("MultiTaperRefills").innerHTML = Refills;
+
+	document.getElementById("MultiTaperQA1Total").innerHTML = sum1 + Intervals*Duration*AllComboList[Intervals-1][0];
+	document.getElementById("MultiTaperQA2Total").innerHTML = sum2 + Intervals*Duration*AllComboList[Intervals-1][1];
+
+}
+
+
+//Find tablet combinations and the minimum required to get a dose
+function findMinTabletCombo(tab1, tab2, targetDose) {
+  const step = 0.5; // quarter tablets
+  let bestCombo = null;
+  let minTablets = Infinity;
+
+  // Max tablets to search (adjust if needed)
+  const maxTabs = 50;
+
+  for (let t1 = 0; t1 <= maxTabs; t1 += step) {
+    for (let t2 = 0; t2 <= maxTabs; t2 += step) {
+      const totalDose = (t1 * tab1) + (t2 * tab2);
+      const totalTabs = t1 + t2;
+
+      // Avoid floating point issues
+      if (Math.abs(totalDose - targetDose) < 0.001 && totalTabs > 0) {
+        if (totalTabs < minTablets) {
+          minTablets = totalTabs;
+          bestCombo = [ t1, t2, targetDose];
+        }
+      }
+    }
+  }
+
+  if (bestCombo) {
+    console.log(
+      `${bestCombo[0]} x ${tab1}mg AND ${bestCombo[1]} x ${tab2}mg = ${targetDose}mg ` +
+      `(Total tablets used: ${minTablets})`
+    );
+    // console.log(bestCombo)
+    return bestCombo;
+  } else {
+    console.log("No valid combination found.");
+    return null;
+  }
+
+}
+
+
 
 
 //Rough Math Work Out
@@ -401,7 +574,7 @@ function add(num){
 		textarea.value = textarea.value + "Number ";
 	}
 	else if (num===11){
-		textarea.value = textarea.value + "(=Num mg) ";
+		textarea.value = textarea.value + " (=Num mg) ";
 	}
 	else if (num===12){
 		textarea.value = textarea.value + ". ";
@@ -506,4 +679,131 @@ function renderGeneral(input){
 
 	//Output
 	textarea.value = textarea.value + input + " ";
+}
+
+
+// Some Math e.g
+// Amoxicillin 250mg/5ml
+// Suspension Concentration per ML is: 50mg/ml
+// If one intake dose is 200mg then you need
+// 200/50 = 4mls (=200mg) for an intake dose
+
+//If qty of doses is 40 then you need 40*4 = 160mls total
+//If pack size is 100 you need a minimum of 2 packs or 200mls
+//If repeats is 1 you need 200 * 2, so 400mls total allocated or 4 packs allocated
+
+
+function SolutionHelper(){
+
+	//Extract
+	var strength = document.getElementById("solutionStrength").value;
+	var PerMl = document.getElementById("perHowManyMl").value;
+	var doseStrength = document.getElementById("solutionDoseStrength").value;
+	var qtyDoses = document.getElementById("solutionQtyDoses").value;
+	var packSize = document.getElementById("solutionPackSize").value;
+	var refills = document.getElementById("solutionRefills").value;
+
+	//Math
+	var concentration = strength/PerMl;
+	var doseInMls = doseStrength/concentration;
+	var qtyNeeded = ((doseInMls*qtyDoses));
+	var qtyNeededRounded = Math.ceil((doseInMls*qtyDoses)/100) * packSize;
+	var qaNeeded = qtyNeeded + qtyNeeded*refills;
+	var qaNeededRounded = qtyNeededRounded + qtyNeededRounded*refills;
+
+
+	//Populate Table
+	document.getElementById("packSizeOutput").innerHTML = packSize + " ml(s)";
+	document.getElementById("solutionConcentrationOutput").innerHTML = concentration + " mg/ml";
+	document.getElementById("solutionAmountOfDosesOutput").innerHTML = qtyDoses;
+
+	document.getElementById("intakeSolutionDose").innerHTML = "Intake Dose of " + doseStrength + "mg (ml):";
+
+	document.getElementById("solutionIntakeDoseOutput").innerHTML = doseInMls + " ml(s)"; 
+	document.getElementById("qtySolutionOutput").innerHTML = qtyNeeded + " ml(s)"; 
+	document.getElementById("qtySolutionRoundedOutput").innerHTML = qtyNeededRounded + " ml(s)"; 
+	document.getElementById("qaSolutionOutput").innerHTML = qaNeeded + " ml(s)"; 
+	document.getElementById("qaSolutionRoundedOutput").innerHTML = qaNeededRounded + " ml(s)"; 
+	document.getElementById("refillsSolutionOutput").innerHTML = refills; 
+
+}
+
+
+
+
+//Change Vanilla English Sig Output to Shorthand
+function ConvertToShorthand(){
+
+	//Extract Text:
+	var textBody = document.getElementById("SIGout");
+	var textContent = document.getElementById("SIGout").innerHTML;
+
+	// Testing
+	console.log(textContent);
+
+	//Replace Text with Shorthand
+	textContent = textContent.replaceAll('Once Daily', 'OD');
+	textContent = textContent.replaceAll('Twice Daily', 'BID');
+	textContent = textContent.replaceAll('Three Times Daily', 'TID');
+	textContent = textContent.replaceAll('Four Times Daily', 'QID');
+
+	textContent = textContent.replaceAll('By Mouth', 'PO');
+
+	textContent = textContent.replaceAll('Take 1 Tablets', 'T1T ');
+	textContent = textContent.replaceAll('Take 1 Tablet', 'T1T ');
+	textContent = textContent.replaceAll('Take 1 Capsules', 'T2T ');
+	textContent = textContent.replaceAll('Take 1 Capsule', 'T2T ');
+
+	textContent = textContent.replaceAll('Take 2 Tablets', 'T2T ');
+	textContent = textContent.replaceAll('Take 2 Capsules', 'T2C ');
+
+	textContent = textContent.replaceAll('Take 3 Tablets', 'T3T ');
+	textContent = textContent.replaceAll('Take 3 Capsules', 'T3C ');
+
+	textContent = textContent.replaceAll('Take 4 Tablets', 'T4T ');
+	textContent = textContent.replaceAll('Take 4 Capsules', 'T4C ');
+
+	textContent = textContent.replaceAll('For', 'F');
+	textContent = textContent.replaceAll('Take', 'T');
+
+	textContent = textContent.replaceAll('Tablets', 'TABS');
+	textContent = textContent.replaceAll('Tablet', 'TAB');
+	textContent = textContent.replaceAll('Capsules', 'CAPS');
+	textContent = textContent.replaceAll('Capsule', 'CAP');
+
+	textContent = textContent.replaceAll('0.5', '1/2 (HALF) A ');
+	textContent = textContent.replaceAll('0.25', '1/4 (QAURTER) A ');
+
+
+	// Test
+	console.log(textContent);
+
+	//Replace Sig Outout
+	textBody.innerHTML = textContent;
+}
+
+//Change Sig output shorthand to Vanilla English
+function RevertToEnglish(){
+
+	//Extract Text:
+	var textBody = document.getElementById("SIGout");
+
+	//Revert Back
+	textBody.innerHTML = originalSigText;
+}
+
+
+function RemovePO(){
+
+	//Extract Text:
+	var textBody = document.getElementById("SIGout");
+	var textContent = document.getElementById("SIGout").innerHTML;
+
+	//Cut/Delete Text
+	textContent = textContent.replaceAll('PO', '');
+	textContent = textContent.replaceAll('By Mouth', '');
+
+	//Replace Sig Output
+	textBody.innerHTML = textContent;
+
 }

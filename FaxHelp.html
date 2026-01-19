@@ -135,10 +135,10 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Case</th>
-        <th scope="col">Content</th>
-        <th scope="col">Use</th>
+        <th scope="col" class="col-1">#</th>
+        <th scope="col" class="col-2">Case</th>
+        <th scope="col" class="col-8">Content</th>
+        <th scope="col" class="col-1">Use</th>
       </tr>
     </thead>
     <tbody>
@@ -146,12 +146,12 @@
         <th scope="row">1</th>
         <td>Vacation</td>
         <td>
-          <p>***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****</p>
-          <p>Good Morning Dr. </p>
-          <p>Patient is going on vacation in X days.</p>
-          <p>They will be dispensing Y days early.</p>
-          <p>Would you like to authorize this early dispense? </p>
-          <p> Cheers, Thank You.</p>
+          <p>***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****
+          <br>Good Morning Dr. 
+          <br>Patient is going on vacation in X days.
+          <br>They will be dispensing Y days early.
+          <br>Would you like to authorize this early dispense? 
+          <br>Cheers, Thank You.
           <p>***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****</p>
         </td>
         <td>
@@ -162,16 +162,34 @@
         <th scope="row">2</th>
         <td>Lost Supply</td>
         <td>
-          <p>***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****</p>
-          <p>Good Morning Dr. </p>
-          <p>Patient has lost/damaged their medication dispense. </p>
-          <p>They are requesting a replacement and will be dispensing X days early.</p>
-          <p>Would you like to authorize this early dispense and replacement supply?</p>
-          <p> Cheers. Thank You.</p>
-          <p>***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****</p>
+          <p>***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****
+            <br>Good Morning Dr.
+            <br>Patient has lost/damaged their medication dispense.
+            <br>They are requesting a replacement and will be dispensing X days early.
+            <br>Would you like to authorize this early dispense and replacement supply?
+            <br>Cheers. Thank You.
+            <br>***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****
+          </p>
         </td>
         <td>
           <button type="button" class="btn btn-success" onclick="reAuthCopy(5, 2)">Copy</button>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>General Early Dispense</td>
+        <td>
+          <p>***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****
+            <br>Good Morning Dr.
+            <br>Patient is requesting an early dispense of their medications.
+            <br>They are requesting a dispensing X days early.  
+            <br>Would you like to authorize this early dispense?
+            <br>Cheers. Thank You.
+            <br>***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****
+          </p>
+        </td>
+        <td>
+          <button type="button" class="btn btn-success" onclick="reAuthCopy(6, 2)">Copy</button>
         </td>
       </tr>
     </tbody>

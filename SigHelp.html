@@ -81,7 +81,7 @@
 
   <!-- Sig and Calculations OutPut -->
   <h2 class="mt-2 ">Prescription Output: </h2>
-  <table class="table table-dark mb-5">
+  <table class="table table-dark">
     <thead>
       <tr>
         <th scope="collapsel"></th>
@@ -106,9 +106,12 @@
     </tbody>
   </table>
 
+  <button type="button" class="btn btn-success mb-5" onclick="ConvertToShorthand()">Convert to Pharmacy Shorthand</button>
+  <button type="button" class="btn btn-success mb-5" onclick="RevertToEnglish()">Convert to Plain English</button>
+  <button type="button" class="btn btn-warning mb-5" onclick="RemovePO()">Remove "PO"/"By Mouth"</button>
 
 
-  <h2>(Single Capsule/Tablet) Taper-Up Once Daily Onwards Sig Generator</h2>
+  <h2>(Single Capsule/Tablet) <em class="font-weight-bold" style="color: green;">Taper-Up+</em>  to Onwards Sig Generator</h2>
   <hr>
 
   <form class="mb-5">
@@ -118,17 +121,24 @@
         <option value="Tablets">Tablets</option>
         <option value="Capsules">Capsules</option>
       </select>
+      <label for="" id="">Daily Frequency</label>
+      <select id="dailyFrequency1" name="dailyFrequency1">
+        <option value=1>Once Daily</option>
+        <option value=2>Twice Daily</option>
+        <option value=3>Three Times Daily</option>
+        <option value=4>Four Times Daily</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="baseStartStrength" id="">Base Starting Dose Strength (e.g in mg)</label>
       <input type="number" name="baseStartStrength" placeholder="e.g 75" id="baseStartStrength">
     </div>
     <div class="form-group">
-      <label for="baseStrength" id="">Base Tablet Strength (e.g in mg)</label>
+      <label for="baseStrength" id="">Base Tablet/Capsule Strength (e.g in mg)</label>
       <input type="number" name="baseStrength" placeholder="e.g 25" id="baseStrength">
     </div>
     <div class="form-group">
-      <label for="baseIncrement" id="">Base <em class="font-weight-bold" style="color: green;">Postive Increment (e.g 25mg every interval)</em></label>
+      <label for="baseIncrement" id="">Base <em class="font-weight-bold" style="color: green;">Positive Increment (e.g 25mg every interval)</em></label>
       <input type="number" name="baseIncrement" placeholder="e.g 25" id="baseIncrement">
     </div>
     <div class="form-group">
@@ -143,13 +153,13 @@
     <label for="RefillCount" id="">How Many Repeats/Refills (e.g 3 Refills Onwards)</label>
     <input type="number" name="RefillCount" placeholder="e.g 3" id="RefillCount">
     </div>    
-      <button type="button" class="btn btn-success" onclick="generateSig(1)">Generate</button>
+      <button type="button" class="btn btn-success" onclick="generateSig(1)">Generate SIG</button>
   </form>
 
 
 
 
-  <h2>(Single Capsule/Tablet) Taper-Down Once Daily Onwards Sig Generator</h2>
+  <h2>(Single Capsule/Tablet) <em class="font-weight-bold" style="color: red">Taper-Down-</em> to Onwards Sig Generator</h2>
   <hr>
 
 
@@ -160,13 +170,20 @@
         <option value="Tablets">Tablets</option>
         <option value="Capsules">Capsules</option>
       </select>
+      <label for="" id="">Daily Frequency</label>
+      <select id="dailyFrequency2" name="dailyFrequency2">
+        <option value=1>Once Daily</option>
+        <option value=2>Twice Daily</option>
+        <option value=3>Three Times Daily</option>
+        <option value=4>Four Times Daily</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="baseStartStrength2" id="">Base Starting Dose Strength (e.g in mg)</label>
       <input type="number" name="baseStartStrength2" placeholder="e.g 75" id="baseStartStrength2">
     </div>
     <div class="form-group">
-      <label for="baseStrength2" id="">Base Tablet Strength (e.g in mg)</label>
+      <label for="baseStrength2" id="">Base Tablet/Capsule Strength (e.g in mg)</label>
       <input type="number" name="baseStrength2" placeholder="e.g 25" id="baseStrength2">
     </div>
     <div class="form-group">
@@ -185,14 +202,20 @@
     <label for="RefillCount2" id="">How Many Repeats/Refills (e.g 3 Refills Onwards)</label>
     <input type="number" name="RefillCount2" placeholder="e.g 3" id="RefillCount2">
     </div>    
-    <button type="button" class="btn btn-success" onclick="generateSig(2)">Generate</button>
+    <button type="button" class="btn btn-success" onclick="generateSig(2)">Generate SIG</button>
   </form>
 
  
 
-  <h2>(Multi Capsule/Tablet) Tapering Onwards Sig Generator</h2>
+  <h2>(Multi (2)-Capsules/Tablets) Tapering Onwards Sig Generator</h2>
   <hr>
-  <h3 style="color: red">**FEATURE STILL BEING DEVELOPED**</h3>
+<!--   <h3 style="color: red">**FEATURE STILL BEING DEVELOPED**</h3>
+ -->
+  <div class="row">
+    
+    <div class="col-5">
+      
+
   <form class="mb-5">
     <div class="form-group">
       <label for="" id="">Form</label>
@@ -210,12 +233,12 @@
       <input type="number" name="basePillStrength32" placeholder="e.g 75" id="basePillStrength32">
     </div>
     <div class="form-group">
-      <label for="dailyFrquency3" id="">How Many Times Daily?</label>
-      <select id="dailyFrquency3" name="dailyFrquency3">
-        <option value="1">Once Daily</option>
-        <option value="2">Twice Daily</option>
-        <option value="3">Three Times Daily</option>
-        <option value="4">Four Times Daily</option>
+      <label for="dailyFrequency3" id="">How Many Times Daily?</label>
+      <select id="dailyFrequency3" name="dailyFrequency3">
+        <option value=1>Once Daily</option>
+        <option value=2>Twice Daily</option>
+        <option value=3>Three Times Daily</option>
+        <option value=4>Four Times Daily</option>
       </select>
 
 <!--       <label for="dailyFrquency3" id="">How Many Times Daily?</label>
@@ -226,8 +249,8 @@
       <input type="number" name="baseStartStrength3" placeholder="e.g 75" id="baseStartStrength3">
     </div>  
     <div class="form-group">
-      <label for="baseDecrement3" id="">Base Increment or Decrement (e.g -25mg every interval or 25mg every interval)</label>
-      <input type="number" name="baseDecrement3" placeholder="e.g -25 or 25" id="baseDecrement3">
+      <label for="MultiTaperScale" id="">Base <em class="font-weight-bold" style="color: orange">Increment or Decrement (e.g -25mg every interval or 25mg every interval)</em></label>
+      <input type="number" name="MultiTaperScale" placeholder="e.g -25 or 25" id="MultiTaperScale">
     </div>
     <div class="form-group">
       <label for="IntervalDuration3" id="">Interval Duration in Days (e.g Every 7 days)</label>
@@ -241,13 +264,155 @@
     <label for="RefillCount3" id="">How Many Repeats/Refills (e.g 3 Refills Onwards)</label>
     <input type="number" name="RefillCount3" placeholder="e.g 3" id="RefillCount3">
     </div>    
-    <button type="button" class="btn btn-success" onclick="generateSig(3)">Generate</button>
+    <button type="button" class="btn btn-success" onclick="generateSig(3)" style="">Generate Details</button>
   </form>
 
 
+    </div>
+
+    <div class="col-7">
+      
+       <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="collapsel" id="">Iterval #</th>
+            <th scope="col" id="">Pill-1 Amount</th>
+            <th scope="col" id="">Pill-2 Amount</th>
+            <th scope="col" id="">Target Dose (mg):</th>
+          </tr>
+        </thead>  
+        <tbody id="MultiTaperBody">
+          <tr>
+            <td id="">...</td> 
+            <td id="">...</td>
+            <td id="">...</td>
+            <td id="">...</td>
+          </tr>
+        </tbody>
+        <tbody id="">
+          <tr>
+            <th scope="col" id="">At Duration of:</th>
+            <th scope="col" id="">Pill-1 Total:</th>
+            <th scope="col" id="">Pill-2 Total:</th>
+            <th scope="col" id="">At Daily Frequency:</th>
+          </tr>
+          <tr>
+            <td id="MultiTaperDuration">...</td> 
+            <td id="MultiTaperQty1Total">...</td>
+            <td id="MultiTaperQty2Total">...</td>
+            <td id="MultiTaperDailyFequency">...</td>
+          </tr>
+        </tbody>
+        <tbody id="">
+          <tr>
+            <th scope="col" id="">Total Days:</th>
+            <th scope="col" id="">QA1 Total:</th>
+            <th scope="col" id="">QA2 Total:</th>
+            <th scope="col" id="">Refills:</th>
+          </tr>
+          <tr>
+            <td id="MultiTaperTotalDays">...</td> 
+            <td id="MultiTaperQA1Total">...</td>
+            <td id="MultiTaperQA2Total">...</td>
+            <td id="MultiTaperRefills">...</td>
+          </tr>
+        </tbody>
+      </table>     
 
 
-  <h2 class="mt-5">SIG Builder</h2>  
+    </div>
+
+
+  </div>
+
+
+
+
+  <h2>Simple Solutions/Concentrations/Suspensions Helper</h2>
+  <hr>
+<!--   <h3 style="color: red">**FEATURE STILL BEING DEVELOPED**</h3>
+ -->  <div class="row">
+    
+        <div class="col-5">
+          <form class="mb-5">
+            <div class="form-group">
+              <label for="solutionStrength" id="">Base Solution Strength in MG</label>
+              <input type="number" name="solutionStrength" placeholder="e.g 250" id="solutionStrength">
+            </div>
+            <div class="form-group">
+              <label for="perHowManyMl" id="">Per How Many ml(s)</label>
+              <input type="number" name="perHowManyMl" placeholder="e.g 5" id="perHowManyMl">
+            </div>
+            <div class="form-group">
+              <label for="solutionDoseStrength" id="">Intake Dose Perscribe in MG</label>
+              <input type="number" name="solutionDoseStrength" placeholder="e.g 200" id="solutionDoseStrength">
+            </div>
+            <div class="form-group">
+            <label for="solutionQtyDoses" id="">How Many Doses per Dispense?</label>
+            <input type="number" name="solutionQtyDoses" placeholder="e.g 40" id="solutionQtyDoses">
+            </div>
+            <div class="form-group">
+            <label for="solutionPackSize" id="">Pack/Bottle Size (in MLs)</label>
+            <input type="number" name="solutionPackSize" placeholder="e.g 100" id="solutionPackSize">
+            </div>
+            <div class="form-group">
+            <label for="solutionRefills" id="">Refills?</label>
+            <input type="number" name="solutionRefills" placeholder="e.g 1" id="solutionRefills">
+            </div>      
+              <button type="button" class="btn btn-success" onclick="generateSig(4)">Generate Details</button>
+          </form>
+        </div>
+
+        <div class="col-7">
+          <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="collapsel" id="">Pack Size (ml):</th>
+                <th scope="col" id="">Concentration (mg/ml):</th>
+                <th scope="col" id="">Amount of Doses:</th>
+                <th scope="col" id="intakeSolutionDose">Intake Dose (ml):</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="packSizeOutput">N/A</td> 
+                <td id="solutionConcentrationOutput">N/A</td>
+                <td id="solutionAmountOfDosesOutput">N/A</td>
+                <td id="solutionIntakeDoseOutput">N/A</td>
+              </tr>
+              <tr>
+                <th scope="col" id="">Qty Needed to dispense (ml):</th>
+                <th scope="col" id="">Qty Needed for dispense Rounded Up:</th>
+                <th scope="col" id="">QA Needed (ml):</th>
+                <th scope="col" id="">QA Rounded Up (ml):</th>
+              </tr>
+              <tr>
+                <td id="qtySolutionOutput">N/A</td>
+                <td id="qtySolutionRoundedOutput">N/A</td>
+                <td id="qaSolutionOutput">N/A</td> 
+                <td id="qaSolutionRoundedOutput">N/A</td>
+              </tr>
+              <tr>
+                <th scope="col" id="">Refills:</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+              <tr>
+                <td id="refillsSolutionOutput">N/A</td>
+                <td id=""></td>
+                <td id=""></td> 
+                <td id=""></td>
+              </tr> 
+            </tbody>
+          </table>
+        </div>
+  </div>
+
+
+
+  <h2 class="">SIG Builder (Helps for Beginners)</h2>
+  <h3><a href="https://chartercollege.edu/news-hub/72-abbreviations-every-pharmacy-tech-needs-know/">Common Shorthands <i class="fas fa-external-link-square-alt"></i></a></h3>
   <hr>
 
   <form class="mb-5">

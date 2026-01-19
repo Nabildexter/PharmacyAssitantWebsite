@@ -80,21 +80,21 @@
 <div class="container mt-5">
 
   <h2>Let A.I Transcribe A Percription</h2>
-  <h2>(Tesseract OCR)</h2>
+  <h4><a href="https://github.com/tesseract-ocr/tesseract">(Tesseract OCR Doc <i class="fas fa-external-link-square-alt"></i> )</a><a href="https://en.wikipedia.org/wiki/Tesseract_(software)">(Wiki <i class="fas fa-external-link-square-alt"></i> )</a></h4>
   <hr>
-  <h3 style="color: red">**FEATURE STILL BEING DEVELOPED**</h3>
-  <h3 style="color: red">**DO NOT PASTE CUSTOMER/PATIENT INFORMATION EVER**</h3>
-
+<!--   <h6 style="color: red">**FEATURE STILL BEING DEVELOPED AND NOT FULLY OPERATIONAL**</h6>
+  <h6 style="color: red">**DO NOT PASTE CUSTOMER/PATIENT INFORMATION EVER**</h6>
+ -->
 
 
 
 <div class="container mb-5">
   <div class="row">
 
-    <div class="col-4">
+    <div class="col-3">
 
       <h4>Details:</h4>
-      <div class="" style="width: 100%; height: 500px; border: solid 1px">
+      <div class="" style="width: 100%; height: 100%; border: solid 1px">
         
         <pre id="rawText"></pre>
         <pre id="sigOutput"></pre>
@@ -120,10 +120,10 @@
 
     </div>
 
-    <div class="col-6">
-      <h4>Paste Prescription Image:</h4>
+    <div class="col-5">
+      <h4>Paste or Upload Prescription Image:</h4>
       
-      <div class="pic" id="pic">
+      <div class="pic" id="pic" style="align-content: center; text-align: center; height: 100%;">
         
                   <!--
         Source - https://stackoverflow.com/a
@@ -131,11 +131,41 @@
         Retrieved 2026-01-07, License - CC BY-SA 4.0
         -->
 
-        <form class="d-none" id="new_document_attachment" method="post" enctype="multipart/form-data">
-          <div class="actions"><input type="submit" name="commit" value="Submit" /></div>
+        <form class="" id="new_document_attachment" method="post" enctype="multipart/form-data">
           <input type="file" name="document_attachment_doc" id="document_attachment_doc" />
+          <div class="actions"><input type="submit" name="commit" value="Submit" /></div>
         </form>
 
+
+      </div>
+
+    </div>
+
+    <div class="col-4">
+      <h4>Instructions:</h4>
+      
+      <div class="" id="">
+        
+        <ol>
+          <li>Copy and paste OR upload image to transcribe into grey area</li>
+          <li>See Details Rendered and Extracted in Details Box</li>
+          <li>Copy and use what you need into your pharmacy software</li>
+        </ol>
+
+        <h4>Disclaimers:</h4>
+
+        <ul>
+          <li>
+            <em class="font-weight-bold" style="color: red">Do not copy and paste sensitive/confidential patient information ever. Always crop out what you do not need.</em>
+          </li>
+          <li>
+            <em class="font-weight-bold" style="color: green">The Transcribe tool is best used with printed perscriptions. It has a hard time with normal/cursive handwritting.</em>
+          </li>
+          <li>
+            <em class="font-weight-bold" style="color: black">The AI Transcribe tool will frequently be updated so it's not always the final final version. It's not fully opreational and of course it takes time for AI to get better.</em>
+          </li>
+          <li>Currently works with: singular tablet/capsule type perscriptions</li>            
+        </ul>
 
       </div>
 
