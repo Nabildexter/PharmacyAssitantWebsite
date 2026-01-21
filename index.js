@@ -381,7 +381,7 @@ function MultiTaper(){
 	var Intervals = document.getElementById("IntervalCount3").value;
 	var Refills = document.getElementById("RefillCount3").value || 0;
 	var result = "";
-	var capOrTab2 = document.getElementById("CapOrTab2").value;
+	var capOrTab3 = document.getElementById("CapOrTab3").value;
 	var maxIntake = 0;
 	var daySupply = Duration*Intervals;
 	var dailyFrequency = document.getElementById("dailyFrequency3").value;
@@ -390,21 +390,23 @@ function MultiTaper(){
 	var Target = baseStartingDose;
 
 	console.log("Adding: " + scale + "mg");
+	console.log("Form: " + capOrTab3);
 
 	//Math
 	for (var i = 0; i < Intervals; i++) {
-		AllComboList[i] = findMinTabletCombo(base1, base2, Target);
+		console.log("---> ---> " + capOrTab3);
+		AllComboList[i] = findMinTabletCombo(base1, base2, Target, capOrTab3);
 		console.log("Target Dose: " + ((Target)+scale*i));
 		Target = Target + scale;
 	}
 
 	//Populate Table
 	console.log(AllComboList);
-	populateMultiTaperTable(Intervals, Duration, AllComboList, Refills, dailyFrequency, base1, base2);
+	populateMultiTaperTable(Intervals, Duration, AllComboList, Refills, dailyFrequency, base1, base2, capOrTab3);
 }
 
 
-function populateMultiTaperTable(Intervals, Duration, AllComboList, Refills, dailyFrequency, base1, base2){
+function populateMultiTaperTable(Intervals, Duration, AllComboList, Refills, dailyFrequency, base1, base2, capOrTab3){
 
 	dailyFrequencyStrings = ["Once Daily", "Twice Daily", "Three Times Daily", "Four Times Daily"];
 
@@ -426,65 +428,78 @@ function populateMultiTaperTable(Intervals, Duration, AllComboList, Refills, dai
 
 
 	//Fill Footer
-
+	//Duration
 	document.getElementById("MultiTaperDuration").innerHTML = Duration + " Days";
+	//Total Days
 	document.getElementById("MultiTaperTotalDays").innerHTML = Intervals*Duration;
 
+	//Pill-1 and Pill-2
 	sum1 = 0;
 	for(var i = 0; i < Intervals; i ++){
-		sum1 = sum1 + AllComboList[i][0]*dailyFrequency;
+		sum1 = sum1 + AllComboList[i][0]*dailyFrequency*Duration;
 	}
 	document.getElementById("MultiTaperQty1Total").innerHTML = sum1;
 	sum2 = 0;
 	for(var i = 0; i < Intervals; i ++){
-		sum2 = sum2 + AllComboList[i][1]*dailyFrequency;
+		sum2 = sum2 + AllComboList[i][1]*dailyFrequency*Duration;
 	}
 	document.getElementById("MultiTaperQty2Total").innerHTML = sum2;
 
+	//At Daily Frequency:
 	document.getElementById("MultiTaperDailyFequency").innerHTML = dailyFrequencyStrings[dailyFrequency-1];
+	//Refills
 	document.getElementById("MultiTaperRefills").innerHTML = Refills;
-
-	document.getElementById("MultiTaperQA1Total").innerHTML = sum1 + Intervals*Duration*AllComboList[Intervals-1][0];
-	document.getElementById("MultiTaperQA2Total").innerHTML = sum2 + Intervals*Duration*AllComboList[Intervals-1][1];
+	// QA totals
+	document.getElementById("MultiTaperQA1Total").innerHTML = sum1 + Refills*Intervals*Duration*AllComboList[Intervals-1][0];
+	document.getElementById("MultiTaperQA2Total").innerHTML = sum2 + Refills*Intervals*Duration*AllComboList[Intervals-1][1];
 
 }
 
 
 //Find tablet combinations and the minimum required to get a dose
-function findMinTabletCombo(tab1, tab2, targetDose) {
-  const step = 0.5; // quarter tablets
-  let bestCombo = null;
-  let minTablets = Infinity;
+function findMinTabletCombo(tab1, tab2, targetDose, capOrTab3) {
 
-  // Max tablets to search (adjust if needed)
-  const maxTabs = 50;
+	console.log("Form --> " + capOrTab3);
 
-  for (let t1 = 0; t1 <= maxTabs; t1 += step) {
-    for (let t2 = 0; t2 <= maxTabs; t2 += step) {
-      const totalDose = (t1 * tab1) + (t2 * tab2);
-      const totalTabs = t1 + t2;
+	//Tablet Default
+	var step = 0.5 // half tablets
+	if(capOrTab3 === "Capsules"){
+		step = 1.0; // whole capsules
+	}
 
-      // Avoid floating point issues
-      if (Math.abs(totalDose - targetDose) < 0.001 && totalTabs > 0) {
-        if (totalTabs < minTablets) {
-          minTablets = totalTabs;
-          bestCombo = [ t1, t2, targetDose];
-        }
-      }
-    }
-  }
 
-  if (bestCombo) {
-    console.log(
-      `${bestCombo[0]} x ${tab1}mg AND ${bestCombo[1]} x ${tab2}mg = ${targetDose}mg ` +
-      `(Total tablets used: ${minTablets})`
-    );
-    // console.log(bestCombo)
-    return bestCombo;
-  } else {
-    console.log("No valid combination found.");
-    return null;
-  }
+	let bestCombo = null;
+	let minTablets = Infinity;
+
+	// Max tablets to search (adjust if needed)
+	const maxTabs = 50;
+
+	for (let t1 = 0; t1 <= maxTabs; t1 += step) {
+	for (let t2 = 0; t2 <= maxTabs; t2 += step) {
+	  const totalDose = (t1 * tab1) + (t2 * tab2);
+	  const totalTabs = t1 + t2;
+
+	  // Avoid floating point issues
+	  if (Math.abs(totalDose - targetDose) < 0.001 && totalTabs > 0) {
+	    if (totalTabs < minTablets) {
+	      minTablets = totalTabs;
+	      bestCombo = [ t1, t2, targetDose];
+	    }
+	  }
+	}
+	}
+
+	if (bestCombo) {
+	console.log(
+	  `${bestCombo[0]} x ${tab1}mg AND ${bestCombo[1]} x ${tab2}mg = ${targetDose}mg ` +
+	  `(Total tablets used: ${minTablets})`
+	);
+	// console.log(bestCombo)
+	return bestCombo;
+	} else {
+	console.log("No valid combination found.");
+	return null;
+	}
 
 }
 
