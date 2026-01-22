@@ -1,3 +1,5 @@
+
+
 /*Rexall Colors*/
 
 .RexallGreenLight1 {
@@ -79,4 +81,46 @@
 }
 
 
+/*Ticker-Tape News Reel*/
+.ticker-nav {
+  width: 100%;
+  background: #0f172a;
+  overflow: hidden;
+  padding: 12px 0;
+  border-bottom: 1px solid #1e293b;
+}
 
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 11s linear infinite;
+}
+
+.ticker-nav:hover .ticker-track {
+/*  animation-play-state: paused;
+*/}
+
+.ticker-track span {
+  color: orange;
+  font-weight: 600;
+  margin: 0 32px;
+  white-space: nowrap;
+  transform: scale(0.95);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Zoom effect as items pass */
+.ticker-track span:hover {
+  transform: scale(1.15);
+  color: #38bdf8;
+  cursor: pointer;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

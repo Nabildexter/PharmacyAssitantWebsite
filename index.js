@@ -2,6 +2,14 @@ console.log("JS Succesfully Connected!");
 console.log("-------");
 console.log("");
 
+//Disable Copy and Pasting Mouse Click
+document.addEventListener('contextmenu', event => event.preventDefault());
+//Disable Copy and Pasting Keystrokes
+document.addEventListener('copy', event => event.preventDefault());
+document.addEventListener('cut', event => event.preventDefault());
+//https://www.google.com/search?q=stop+people+from+copyping+pasting+html+cs+js&oq=stop+people+from+copyping+pasting+html+cs+js&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAjIHCAIQIRiPAtIBCTEzMDk0ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8
+
+
 //Keep Global Variable for Caching
 var originalSigText = "N/A";
 
@@ -75,6 +83,19 @@ function launchMail(){
 }
 
 
+//DIN/PIN List Indexing Column Properly
+printIndexForDins()
+function printIndexForDins(){
+
+	//Select
+	var AllDinsIndexColums = document.getElementsByClassName("DINIndexes");
+
+	//Loop
+	for (var i = 0; i < AllDinsIndexColums.length; i++) {
+		AllDinsIndexColums[i].innerHTML = i+1;
+	}
+}
+
 
 //Reauth Copy Function
 function reAuthCopy(num){
@@ -99,8 +120,8 @@ function reAuthCopy(num){
 		text += "Patient is going on vacation in X days.\n";
 		text += "They will be dispensing Y days early.\n";
 		text += "Would you like to authorize this early dispense? Cheers.\n";
-		text += "Cheers, Thank You.\n"
-		text += "***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****\n"
+		text += "Cheers, Thank You.\n";
+		text += "***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****\n";
 		copyAlert(2);
 
 	}
@@ -110,8 +131,8 @@ function reAuthCopy(num){
 		text += "Patient has lost/damaged their medication dispense.\n";
 		text += "They will be dispensing X days early.\n";
 		text += "Would you like to authorize this early dispense and replacement supply?\n";
-		text += "Cheers, Thank You.\n"
-		text += "***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****\n"
+		text += "Cheers, Thank You.\n";
+		text += "***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****\n";
 		copyAlert(2);
 
 	}
@@ -121,10 +142,20 @@ function reAuthCopy(num){
 		text += "Patient is requesting an early dispense of their medications.\n";
 		text += "They are requesting a dispensing X days early.\n";
 		text += "Would you like to authorize this early dispense?\n";
-		text += "Cheers, Thank You.\n"
-		text += "***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****\n"
+		text += "Cheers, Thank You.\n";
+		text += "***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****\n";
 		copyAlert(2);
 
+	}
+	if(num===7){
+		text = "***** MEDICATION BACKORDERED *****\n";
+		text += "Good Morning Dr.\n";
+		text += "This Medication is Backordered.\n";
+		text += "Would you like to prescribe an alternative for the time being?\n";
+		text += "Would you like to authorize this early dispense?\n";
+		text += "Cheers, Thank You.\n"
+		text += "***** MEDICATION BACKORDERED *****\n";
+		copyAlert(2);		
 	}
   // Copy the text inside the text field
   navigator.clipboard.writeText(text)
@@ -498,7 +529,8 @@ function findMinTabletCombo(tab1, tab2, targetDose, capOrTab3) {
 	return bestCombo;
 	} else {
 	console.log("No valid combination found.");
-	return null;
+	// alert("No Valid Combination Found");
+	return ["Error","Error", "Combination Impossible "];
 	}
 
 }

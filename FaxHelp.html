@@ -76,6 +76,55 @@
 
 
 
+<!-- Drug Shortage Ticker -->
+<div class="ticker-nav">
+  <div class="ticker-track">
+    <span>| Currently Backordered |</span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+
+    <!-- Duplicate for seamless loop -->
+    <span>| Currently Backordered |</span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
 
 <div class="container m-5">
     
@@ -124,8 +173,8 @@
     </tbody>
   </table>
 
-  <h1>Early Dispense Request/Authorization Template:</h1>
-  <h1>(Vacation, Early Dispense, Lost Supply, etc) :</h1>
+  <h1>Early Dispense or Change Request/Authorization Template:</h1>
+  <h3>(Vacation, Early Dispense, Lost Supply, etc)</h3>
   <hr>
 
   <!--Copy Output-->
@@ -155,7 +204,7 @@
           <p>***** !!! Urgent !!! ***** ***** !!! Urgent !!! ***** ***** !!! Urgent !!! *****</p>
         </td>
         <td>
-          <button type="button" class="btn btn-success" onclick="reAuthCopy(4, 2)">Copy</button>
+          <button type="button" class="btn btn-success" onclick="reAuthCopy(4)">Copy</button>
         </td>
       </tr>
       <tr>
@@ -172,7 +221,7 @@
           </p>
         </td>
         <td>
-          <button type="button" class="btn btn-success" onclick="reAuthCopy(5, 2)">Copy</button>
+          <button type="button" class="btn btn-success" onclick="reAuthCopy(5)">Copy</button>
         </td>
       </tr>
       <tr>
@@ -189,7 +238,23 @@
           </p>
         </td>
         <td>
-          <button type="button" class="btn btn-success" onclick="reAuthCopy(6, 2)">Copy</button>
+          <button type="button" class="btn btn-success" onclick="reAuthCopy(6)">Copy</button>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>Back Ordered</td>
+        <td>
+          <p>***** MEDICATION BACKORDERED *****
+            <br>Good Morning Dr.
+            <br>This Medication is Backordered.
+            <br>Would you like to prescribe an alternative for the time being?
+            <br>Cheers. Thank You.
+            <br>***** MEDICATION BACKORDERED *****
+          </p>
+        </td>
+        <td>
+          <button type="button" class="btn btn-success" onclick="reAuthCopy(7)">Copy</button>
         </td>
       </tr>
     </tbody>
