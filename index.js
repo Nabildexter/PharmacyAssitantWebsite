@@ -2,12 +2,103 @@ console.log("JS Succesfully Connected!");
 console.log("-------");
 console.log("");
 
+
+
+
 //Disable Copy and Pasting Mouse Click
 document.addEventListener('contextmenu', event => event.preventDefault());
 //Disable Copy and Pasting Keystrokes
 document.addEventListener('copy', event => event.preventDefault());
 document.addEventListener('cut', event => event.preventDefault());
 //https://www.google.com/search?q=stop+people+from+copyping+pasting+html+cs+js&oq=stop+people+from+copyping+pasting+html+cs+js&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAjIHCAIQIRiPAtIBCTEzMDk0ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8
+
+
+//BackOrdered Results
+/*
+  openFDA Drug Shortages – Client-Side JS
+  Safe for browser use
+  Commercial use allowed
+  No API key required
+
+  Data source: U.S. FDA (openFDA)
+*/
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadDrugShortages();
+});
+
+async function loadDrugShortages() {
+  const output = document.getElementsByClassName("startBackOrderList");
+
+  output[0].innerHTML = "Loading drug shortages…";
+  // output[1].innerHTML = "Loading drug shortages…";
+
+  try {
+    const response = await fetch(
+    	//Tablets Capsules and Patches
+      "https://api.fda.gov/drug/shortages.json?search=dosage_form:tablet+dosage_form:capsule+dosage_form:patch&limit=20"
+    );
+
+    if (!response.ok) {
+      throw new Error("API request failed");
+    }
+
+    const data = await response.json();
+
+    output[0].innerHTML = `<span style='color: red'>|> Shortage Alert <|</span>`;
+    // output[1].innerHTML = "|> Shortage Alert <|";
+
+    if (!data.results || data.results.length === 0) {
+      output[0].innerHTML = "<span>No active shortages found.</span>";
+      // output[1].innerHTML = "<span>No active shortages found.</span>";
+      return;
+    }
+
+    data.results.forEach(drug => {
+      const item = document.createElement("span");
+      item.className = "shortage-item";
+      var strength = extractStrength(drug.product_description);
+
+      item.innerHTML = `
+        ${drug.generic_name || drug.brand_name || "Unknown Drug"} > 
+        		Status: ${drug.status} > 
+        		Availability: ${drug.availability || "Unknown"} > 
+       			Last updated: ${drug.update_date || "N/A"} |
+      `;
+
+      output[0].appendChild(item);
+      output[0].innerHTML = output[0].innerHTML + `<span style='color: red'>|> Shortage Alert <|</span>`;
+      // output[1].appendChild(item);
+
+    });
+
+  } catch (error) {
+    console.error(error);
+    output[0].innerHTML = "<span>Error loading drug shortage data.</span>";
+    output[1].innerHTML = "<span>Error loading drug shortage data.</span>";
+
+  }
+}
+
+//Regex Function to find strength from API
+function extractStrength(text) {
+  if (!text) return "Unknown";
+
+  const patterns = [
+    /\d+(\.\d+)?\s?(mg\/mL|mg\/5 mL|mg|mcg\/mL|mcg|g\/mL|g|IU\/mL|IU|%)/i,
+    /\d+(\.\d+)?\s?(mEq|mmol)/i
+  ];
+
+  for (const pattern of patterns) {
+    const match = text.match(pattern);
+    if (match) return match[0];
+  }
+
+  return "Unknown";
+}
+
+
+
 
 
 //Keep Global Variable for Caching

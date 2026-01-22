@@ -93,12 +93,12 @@
 .ticker-track {
   display: flex;
   width: max-content;
-  animation: scroll 11s linear infinite;
+  animation: scroll 100s linear infinite;
 }
 
 .ticker-nav:hover .ticker-track {
-/*  animation-play-state: paused;
-*/}
+  animation-play-state: paused;
+}
 
 .ticker-track span {
   color: orange;
@@ -111,8 +111,8 @@
 
 /* Zoom effect as items pass */
 .ticker-track span:hover {
-  transform: scale(1.15);
-  color: #38bdf8;
+/*  transform: scale(1.15);
+*/  color: #38bdf8;
   cursor: pointer;
 }
 
@@ -121,6 +121,6 @@
     transform: translateX(0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
