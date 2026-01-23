@@ -6,10 +6,10 @@ console.log("");
 
 
 //Disable Copy and Pasting Mouse Click
-document.addEventListener('contextmenu', event => event.preventDefault());
-//Disable Copy and Pasting Keystrokes
-document.addEventListener('copy', event => event.preventDefault());
-document.addEventListener('cut', event => event.preventDefault());
+// document.addEventListener('contextmenu', event => event.preventDefault());
+// //Disable Copy and Pasting Keystrokes
+// document.addEventListener('copy', event => event.preventDefault());
+// document.addEventListener('cut', event => event.preventDefault());
 //https://www.google.com/search?q=stop+people+from+copyping+pasting+html+cs+js&oq=stop+people+from+copyping+pasting+html+cs+js&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRiPAjIHCAIQIRiPAtIBCTEzMDk0ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8
 
 
