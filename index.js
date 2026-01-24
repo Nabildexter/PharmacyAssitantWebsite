@@ -881,7 +881,7 @@ function ConvertToShorthand(){
 	console.log(textContent);
 
 	//Replace Text with Shorthand
-	textContent = textContent.replaceAll('Once Daily', 'OD');
+	textContent = textContent.replaceAll('Once Daily', 'O.D');
 	textContent = textContent.replaceAll('Twice Daily', 'BID');
 	textContent = textContent.replaceAll('Three Times Daily', 'TID');
 	textContent = textContent.replaceAll('Four Times Daily', 'QID');
