@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AI Help</title>
+  <title>Sign-In/Register</title>
 
 
 	<!-- Boostrap Styles -->
@@ -10,15 +10,25 @@
 <!-- Personal Styles -->
 <link rel="stylesheet" type="text/css" href="index.css">
 
+
 <!-- FontAwesome Icons -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
+
+<!-- PayPal -->
+<script 
+  src="https://www.paypal.com/sdk/js?client-id=BAArUQEpw5sBZRA-VIeADyeJoADfaOVC8v2eQ1qs9x1OOvib6pGN9K-IySWJ4w7E7A57tUVY-uU0FS91W0&components=hosted-buttons&disable-funding=venmo&currency=CAD">
+</script>
+
+
+<!-- Google Adsense -->
+<!-- <meta name="google-adsense-account" content="ca-pub-8702923648062150">
+ -->
 
 </head>
 <body>
 
 
-<!-- Navbar -->
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark RexallGreenLight1">
   <a class="navbar-brand" href="index.html">myRxTool</a>
@@ -73,10 +83,12 @@
       <li class="nav-item active">
         <a class="nav-link" href="Dashboard.html"><i class="fas fa-user"></i><span class="sr-only">(current)</span></a>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="SignInSignUp.html"><i class="fas fa-user"></i><span class="sr-only">(current)</span></a>
+      </li>
     </ul>
   </div>
 </nav>
-
 
 
 
@@ -93,132 +105,33 @@
 </div>
 
 
-<!-- Container -->
-<div class="container mt-5">
+<!-- Welcome Content-->
+<div class="container mt-5" style="min-width: 80%">
 
-  <h2>Let A.I Transcribe A Percription</h2>
-  <h5><a href="https://github.com/tesseract-ocr/tesseract">(Tesseract OCR Doc <i class="fas fa-external-link-square-alt"></i> )</a><a href="https://en.wikipedia.org/wiki/Tesseract_(software)">(Wiki <i class="fas fa-external-link-square-alt"></i> )</a></h5>
-  <h5>This application uses Tesseract OCR (https://github.com/tesseract-ocr), licensed under Apache License 2.0.</h5>
-  <hr>
-<!--   <h6 style="color: red">**FEATURE STILL BEING DEVELOPED AND NOT FULLY OPERATIONAL**</h6>
-  <h6 style="color: red">**DO NOT PASTE CUSTOMER/PATIENT INFORMATION EVER**</h6>
- -->
+<!-- Jumbotron -->
+  <div class="jumbotron RexallGreenLight2" style="text-align: center;">
+    <div class="row">
+      <div class="col">
+        <h1 class="display-4">Sign In / Sign Up</h1>
+        <h2 class="mb-5">To myRxTool</h2>
 
-
-
-<div class="container mb-5">
-  <div class="row">
-
-    <div class="col-3">
-
-      <h4>Raw AI-Detected Text:</h4>
-      <div class="mb-2" style="width: 100%; height: 30%; border: solid 1px">
-        
-        <p id="rawText"></p>
-
-      </div>
-
-
-      <h4>Processed Details:</h4>
-      <div class="" style="width: 100%; height: 30%; border: solid 1px">
-        
-        <p id="sigOutput"></p>
-
-      </div>
-
-
-      <h4>Shorthand Details:</h4>
-      <div class="" style="width: 100%; height: 25%; border: solid 1px">
-        
-        <p id="sigOutput"></p>
-
-      </div>
-
-<!--       <button type="button" class="btn btn-success mt-2" onclick="generateSig(3)">Generate Data</button>
- -->
-
-
-<!--       <h4>Patient:</h4>
-      <textarea class=""></textarea>
-
-      <h4>Drug:</h4>
-      <textarea class=""></textarea>
-
-
-      <h4>SIG:</h4>
-      <textarea class=""></textarea> -->
-<!-- 
-      <button type="button" class="btn btn-success"  onclick="alert('Feature Is Still Being Developed\nComing Soon Hopefully!')">AI Transcribe</button> -->
-
-    </div>
-
-    <div class="col-5">
-      <h4>Paste or Upload Prescription Image:</h4
->      
-      <div class="pic" id="pic" style="align-content: center; text-align: center; height: 100%;">
-        
-                  <!--
-        Source - https://stackoverflow.com/a
-        Posted by Jake, modified by community. See post 'Timeline' for change history
-        Retrieved 2026-01-07, License - CC BY-SA 4.0
-        -->
-
-        <form class="" id="new_document_attachment" method="post" enctype="multipart/form-data">
-          <input type="file" name="document_attachment_doc" id="document_attachment_doc" />
-          <div class="actions"><input type="submit" name="commit" value="Submit" /></div>
-        </form>
-
+          <form>
+            <label for="email">Email:</label>
+            <input type="email" name="email" placeholder="username@gmail.com">
+            <label for="password">Password:</label>
+            <input type="password" name="password" placeholder="**********">
+            <hr class="my-4">
+            <a class="btn btn-primary btn-lg mr-5" role="button">Sign In</a>
+            <a class="btn btn-warning btn-lg" role="button">Sign Up</a>
+          </form>
 
       </div>
 
     </div>
-
-    <div class="col-4">
-      <h4>Instructions:</h4>
-      
-      <div class="" id="">
-        
-        <ol>
-          <li>Copy and paste OR upload image to transcribe into grey area</li>
-          <li>See Details Rendered and Extracted in Details Box</li>
-          <li>Copy and use what you need into your pharmacy software</li>
-        </ol>
-
-        <h4>Legal + Other Disclaimers:</h4>
-
-        <ul>
-          <li>
-            <em class="font-weight-bold" style="color: red">Use tool at own risk. A pharmacist/physician must always sign off on the information generated by this platform. There may still be bugs and errors in this tool that are not refined. This tool and its creator, Nabil Nazri, are not liable for any and all medical or financial/billilng complications/accidents.</em>
-          </li>
-          <li>
-            <em class="font-weight-bold" style="color: red">Do not copy and paste sensitive/confidential patient information ever. Always crop out what you do not need.</em>
-          </li>
-          <li>
-            <em class="font-weight-bold" style="color: green">The Transcribe tool is best used with printed perscriptions. It has a hard time with normal/cursive handwritting.</em>
-          </li>
-          <li>
-            <em class="font-weight-bold" style="color: black">The AI Transcribe tool will frequently be updated so it's not always the final final version. It's not fully opreational and of course it takes time for AI to get better.</em>
-          </li>
-          <li>Currently works with: singular tablet/capsule type perscriptions</li>            
-        </ul>
-
-      </div>
-
-    </div>
-
   </div>
-</div>
-
-
-<!-- <div id="pic" style="width:300px;height:200px;border:1px solid #ccc;"></div>
-
-<pre id="rawText"></pre>
-<pre id="sigOutput"></pre>
 
 
 </div>
-
- -->
 
 
 <!-- Footer -->
@@ -227,7 +140,7 @@
 </div>
 
 
-<!-- Boostrap Scripts -->
+	<!-- Boostrap Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
@@ -235,11 +148,7 @@
 
 <!-- Native JS Script -->
 <script type="text/javascript" src="index.js"></script>
-<!-- Native AI JS Script  -->
-<script type="text/javascript" src="AI.js"></script>
 
-<!-- Tesseract.js -->
-<script src="https://unpkg.com/tesseract.js@5/dist/tesseract.min.js"></script>
 
 
 </body>
