@@ -881,7 +881,7 @@ function ConvertToShorthand(){
 	console.log(textContent);
 
 	//Replace Text with Shorthand
-	textContent = textContent.replaceAll('Once Daily', 'O.D');
+	textContent = textContent.replaceAll('Once Daily', '1D');
 	textContent = textContent.replaceAll('Twice Daily', 'BID');
 	textContent = textContent.replaceAll('Three Times Daily', 'TID');
 	textContent = textContent.replaceAll('Four Times Daily', 'QID');
@@ -946,3 +946,22 @@ function RemovePO(){
 	textBody.innerHTML = textContent;
 
 }
+
+
+
+something();
+
+
+var a = "Class";
+
+
+function something(){
+	console.log("Hello World!!!!!");
+}
+
+somethingElse();
+
+function somethingElse(){
+	console.log("Hello " + a);
+}
+
